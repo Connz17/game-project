@@ -1,25 +1,35 @@
-.game-grid {
+.game {
   height: 80vh;
+  width: 90vw;
+  margin: auto;
   cursor: pointer;
   display: grid;
-  grid-template-columns: 1fr repeat(8, 2fr) 1fr;
-  grid-template-rows: 1fr repeat(6, 2fr) 1fr;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
   gap: 10px;
-  grid-template-areas: ". thorns thorns thorns thorns thorns thorns thorns thorns ." ". path bomb path path path path path path bomb" ". path thorns path bomb thorns thorns thorns path gate" ". path bomb path path path thorns path bomb ." "gate path path thorns thorns path path path thorns ." ". thorns path thorns thorns path path bomb thorns ." ". thorns path path path path path path thorns ." ". thorns thorns thorns thorns bomb thorns gate thorns .";
+  grid-template-areas: "thorns thorns thorns thorns thorns thorns thorns thorns thorns thorns" "thorns path bomb path path path path path path bomb" "thorns path thorns path bomb thorns thorns thorns path gate" "thorns path bomb path path path thorns path bomb thorns" "gate path path thorns thorns path path path thorns thorns" "thorns thorns path thorns thorns path path bomb thorns thorns" "thorns thorns path path path path path path thorns thorns" "thorns thorns thorns thorns thorns bomb thorns gate thorns thorns";
+  background-color: #70757e;
 }
-.game-grid__path {
+.game__square {
+  border: solid 2px red;
+}
+
+#path {
   grid-area: path;
   background-color: darksalmon;
 }
-.game-grid__thorns {
+
+#thorns {
   grid-area: thorns;
   background-color: darkolivegreen;
 }
-.game-grid__bomb {
+
+#bomb {
   grid-area: bomb;
   background-color: darksalmon;
 }
-.game-grid__gate {
+
+#gate {
   grid-area: gate;
   background-color: dodgerblue;
 }
