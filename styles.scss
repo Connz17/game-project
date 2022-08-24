@@ -1,4 +1,8 @@
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 
 
@@ -27,40 +31,363 @@
 
     background-color: rgb(112, 117, 126);
 
-    &__square {
-        border: solid 2px red;
-    }
 
     
+
+    &__path {
+    background-color: darksalmon;
+}
+    
+    &__thorns {
+    background-color: darkolivegreen;
+}
+
+    &__bomb {
+    background-color: darksalmon;
+}
+    
+    &__gate {
+    background-color:dodgerblue;
+}
 
 }
 
+// Path DIV ids
+#p1 {
+    grid-area: path;
+}
 
- #path {
-        grid-area: path;
-        background-color: darksalmon;
-    }
+#p2 {
+    grid-area: path;
+}
+
+#p3 {
+    grid-area: path;
+}
+
+#p4 {
+    grid-area: path;
+}
+
+#p5 {
+    grid-area: path;
+}
+
+#p6 {
+    grid-area: path;
+}
+
+#p7 {
+    grid-area: path;
+}
+
+#p8 {
+    grid-area: path;
+}
+
+#p9 {
+    grid-area: path;
+}
+
+#p10 {
+    grid-area: path;
+}
+
+#p11 {
+    grid-area: path;
+}
+
+#p12 {
+    grid-area: path;
+}
+
+#p13 {
+    grid-area: path;
+}
+
+#p14 {
+    grid-area: path;
+}
+
+#p15 {
+    grid-area: path;
+}
+
+#p16 {
+    grid-area: path;
+}
+
+#p17 {
+    grid-area: path;
+}
+
+#p18 {
+    grid-area: path;
+}
+
+#p19 {
+    grid-area: path;
+}
+
+#p20 {
+    grid-area: path;
+}
+
+#p21 {
+    grid-area: path;
+}
+
+#p22 {
+    grid-area: path;
+}
+
+#p23 {
+    grid-area: path;
+}
+
+#p24 {
+    grid-area: path;
+}
+
+#p25 {
+    grid-area: path;
+}
+
+#p26 {
+    grid-area: path;
+}
+
+#p27 {
+    grid-area: path;
+}
+
+#p28 {
+    grid-area: path;
+}
+
+#p29 {
+    grid-area: path;
+}
     
     
+// thorns DIV IDs
+#t1 {
+    grid-area: thorns;
+}
+
+#t2 {
+    grid-area: thorns;
+}
+
+#t3 {
+    grid-area: thorns;
+}
+
+#t4 {
+    grid-area: thorns;
+}
+
+#t5 {
+    grid-area: thorns;
+}
+
+#t6 {
+    grid-area: thorns;
+}
+
+#t7 {
+    grid-area: thorns;
+}
+
+#t8 {
+    grid-area: thorns;
+}
+
+#t9 {
+    grid-area: thorns;
+}
+
+#t10 {
+    grid-area: thorns;
+}
+
+#t11 {
+    grid-area: thorns;
+}
+
+#t12 {
+    grid-area: thorns;
+}
+
+#t13 {
+    grid-area: thorns;
+}
+
+#t14 {
+    grid-area: thorns;
+}
+
+#t15 {
+    grid-area: thorns;
+}
+
+#t16 {
+    grid-area: thorns;
+}
+
+#t17 {
+    grid-area: thorns;
+}
+
+#t18 {
+    grid-area: thorns;
+}
+
+#t19 {
+    grid-area: thorns;
+}
+
+#t20 {
+    grid-area: thorns;
+}
+
+#t21 {
+    grid-area: thorns;
+}
+
+#t22 {
+    grid-area: thorns;
+}
+
+#t23 {
+    grid-area: thorns;
+}
+
+#t24 {
+    grid-area: thorns;
+}
+
+#t25 {
+    grid-area: thorns;
+}
+
+#t26 {
+    grid-area: thorns;
+}
+
+#t27 {
+    grid-area: thorns;
+}
+
+#t28 {
+    grid-area: thorns;
+}
+
+#t29 {
+    grid-area: thorns;
+}
+
+#t30 {
+    grid-area: thorns;
+}
+
+#t31 {
+    grid-area: thorns;
+}
+
+#t32 {
+    grid-area: thorns;
+}
+
+#t33 {
+    grid-area: thorns;
+}
+
+#t34 {
+    grid-area: thorns;
+}
+
+#t35 {
+    grid-area: thorns;
+}
+
+#t36 {
+    grid-area: thorns;
+}
+
+#t37 {
+    grid-area: thorns;
+}
+
+#t38 {
+    grid-area: thorns;
+}
+
+#t39 {
+    grid-area: thorns;
+}
+
+#t40 {
+    grid-area: thorns;
+}
+
+#t41 {
+    grid-area: thorns;
+}
+
+
+#b1 {
+    grid-area: bomb;
+
+}
+
+#b2 {
+    grid-area: bomb;
+
+}
+
+#b3 {
+    grid-area: bomb;
+
+}
+
+#b4 {
+    grid-area: bomb;
+
+}
+
+#b5 {
+    grid-area: bomb;
+
+}
+
+#b6 {
+    grid-area: bomb;
+
+}
+
+#b7 {
+    grid-area: bomb;
+
+}
+
     
-    #thorns {
-        grid-area: thorns;
-        background-color: darkolivegreen;
-    }
+#g1 {
+    grid-area: gate;
+
+}
+
+#g2 {
+    grid-area: gate;
+
+}
+
+#g3 {
+    grid-area: gate;
+
+} 
+    
+
     
     
-    
-    
-    #bomb {
-        grid-area: bomb;
-        background-color: darksalmon;
-    }
-    
-    
-    
-    
-    #gate {
-        grid-area: gate;
-        background-color:dodgerblue;
-    }
     
