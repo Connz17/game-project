@@ -1,22 +1,33 @@
 // get all game squares
-const pathwaySquares = document.getElementsByClassName("game__path")
+const pathwaySquares = document.querySelectorAll(".game__path")
 console.log(pathwaySquares);
 
-const thornSquares = document.getElementsByClassName("game__thorns")
+const thornSquares = document.querySelectorAll(".game__thorns")
 console.log(thornSquares);
 
-const bombSquares = document.getElementsByClassName("game__bomb")
+const bombSquares = document.querySelectorAll(".game__bomb")
 console.log(bombSquares);
 
-const gatewaySquares = document.getElementsByClassName("game__gate");
+const gatewaySquares = document.querySelectorAll(".game__gate");
 console.log(gatewaySquares);
 
 // get start button
 const startButton = document.getElementById("game-start")
 console.log(startButton);
 
+// get gateway, finish and trap buttons
+const gateway = document.querySelector("g2")
+console.log(gateway);
+
+const finish = document.getElementById("g1")
+console.log(finish);
+
+const trap = document.getElementById("g3")
+console.log(trap);
+
+
 // get movement buttons
-const characterMovement = document.getElementsByClassName("movement__buttons")
+const characterMovement = document.querySelectorAll(".movement__buttons")
 console.log(characterMovement); 
 
 
@@ -25,8 +36,8 @@ console.log(characterMovement);
 const pathways = Array.from(pathwaySquares)
 console.log(pathways);
 
-const movements = Array.from(characterMovement)
-console.log(movements);
+// const movements = Array.from(characterMovement)
+// console.log(movements);
 
 const bombs = Array.from(bombSquares)
 console.log(bombs);
@@ -51,17 +62,18 @@ console.log(gateways);
 // Handle Start function
 const handleStartGame = () => {
     console.log("game has started");
-
+    
+    // new player appears at gateway
 
 };
 
 
 
 // handle Character movement
-const handlePlayerMovement = () => {
-    
-    switch (movements) {
-        case [0]:
+const handlePlayerMovement = (e) => {
+console.log(e);
+    switch (e.target.value) {
+        case "up":
             console.log("player moved up");
             break;
         case "left":
@@ -77,7 +89,6 @@ const handlePlayerMovement = () => {
             console.log("no movement");
             break;
         }
-
 };
 
 
@@ -106,33 +117,30 @@ const handleHealth = () => {
         bomb.addEventListener("mouseover", () => console.log("BOOOOOM -20hp"));
     });
     
-
 };
 
 // Handle gateway and warping
-const handleGateway = () => {
-    // if (payer.target == gateways[0]) {
-    //     console.log("Congratulations");
-    // } else if (payer.target == gateways[2]) {
+const handleTrap = (e) => {
+    // if (payer.target = trap) {
     //     console.log("Genjutsu trap")
     // }
-
-    gateways.forEach((gateway) => {
-        gateway.addEventListener("mouseover", () => {
-            if (gateway[0]) {
-                console.log("Congratulations")
-            } else if (gateway[2]) {
-                condition
-            }console.log("Genjutsu trap")
-                
+    trap.addEventListener("mouseover", (e) => {
+            console.log("Caught in a Genjutsu trap");
             
-        })
-    })
-};
+        })  
+    };
 
 
+// Handle winning
+const handleWin = () => {
+    // if (payer.target = finish) {
+    //     console.log("Congratulation you WON!")
+    // }
+    finish.addEventListener("mouseover", () => {
+        console.log("Congratulation you WON!")
+});
 
-
+}
 
 
 
@@ -143,11 +151,13 @@ startButton.addEventListener("click", handleStartGame);
 
 
 // character movement
-movements.forEach((movement) => {
-    movement.addEventListener("click", () => {
-        handlePlayerMovement ();
+characterMovement.forEach((movement) => {
+    movement.addEventListener("click", (e) => {
+        handlePlayerMovement (e);
         // handleBomb ();
         handleHealth ();
+        handleWin ();
+        handleTrap ();
     })
     
 });
@@ -160,4 +170,5 @@ movements.forEach((movement) => {
 // Function test
 // handleBomb ()
 handleHealth ();
-handleGateway ();
+handleTrap ();
+handleWin ();
