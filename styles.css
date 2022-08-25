@@ -4,8 +4,28 @@
   box-sizing: border-box;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+nav .top-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+nav .top-bar__button {
+  margin: 0.5rem;
+}
+
+.title {
+  text-align: center;
+}
+
+#game-start {
+  margin: 1rem;
+}
+
 .game {
-  height: 80vh;
+  height: 70vh;
   width: 90vw;
   margin: auto;
   cursor: pointer;
@@ -347,4 +367,12 @@
 
 #g3 {
   grid-area: g3;
+}
+
+.movement {
+  height: 20vh;
+  text-align: center;
+}
+.movement__buttons {
+  margin: 0.15rem;
 }

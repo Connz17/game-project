@@ -9,43 +9,51 @@
 <body>
     <header>
         <nav>
-            <h1>My Game!</h1>
+            <h1 class="top-bar__button">menu</h1>
+            <div class="top-bar">
+                <h2 class="top-bar__button">levels</h2>
+                <h2 class="top-bar__button">options</h2>
+            </div>            
+        </nav>
+        <section class="title">
+            <h1>My Game!</h1> 
             <p>welcome to my maze! see if you can get to the end and avoid the hidden bombs</p>
-        </nav>        
+        </section>            
     </header>
 
     <main>
+        <button id="game-start">Start</button>
         <div class="game">
             <!-- Path squares -->
-            <div class="game__path" id="p1">Path</div>
-            <div class="game__path" id="p2">Path</div>
-            <div class="game__path" id="p3">Path</div>
-            <div class="game__path" id="p4">Path</div>
-            <div class="game__path" id="p5">Path</div>
-            <div class="game__path" id="p6">Path</div>
-            <div class="game__path" id="p7">Path</div>
-            <div class="game__path" id="p8">Path</div>
-            <div class="game__path" id="p9">Path</div>
-            <div class="game__path" id="p10">Path</div>
-            <div class="game__path" id="p11">Path</div>
-            <div class="game__path" id="p12">Path</div>
-            <div class="game__path" id="p13">Path</div>
-            <div class="game__path" id="p14">Path</div>
-            <div class="game__path" id="p15">Path</div>
-            <div class="game__path" id="p16">Path</div>
-            <div class="game__path" id="p17">Path</div>
-            <div class="game__path" id="p18">Path</div>
-            <div class="game__path" id="p19">Path</div>
-            <div class="game__path" id="p20">Path</div>
-            <div class="game__path" id="p21">Path</div>
-            <div class="game__path" id="p22">Path</div>
-            <div class="game__path" id="p23">Path</div>
-            <div class="game__path" id="p24">Path</div>
-            <div class="game__path" id="p25">Path</div>
-            <div class="game__path" id="p26">Path</div>
-            <div class="game__path" id="p27">Path</div>
-            <div class="game__path" id="p28">Path</div>
-            <div class="game__path" id="p29">Path</div>
+            <div class="game__path" id="p1">Pathway</div>
+            <div class="game__path" id="p2">Pathway</div>
+            <div class="game__path" id="p3">Pathway</div>
+            <div class="game__path" id="p4">Pathway</div>
+            <div class="game__path" id="p5">Pathway</div>
+            <div class="game__path" id="p6">Pathway</div>
+            <div class="game__path" id="p7">Pathway</div>
+            <div class="game__path" id="p8">Pathway</div>
+            <div class="game__path" id="p9">Pathway</div>
+            <div class="game__path" id="p10">Pathway</div>
+            <div class="game__path" id="p11">Pathway</div>
+            <div class="game__path" id="p12">Pathway</div>
+            <div class="game__path" id="p13">Pathway</div>
+            <div class="game__path" id="p14">Pathway</div>
+            <div class="game__path" id="p15">Pathway</div>
+            <div class="game__path" id="p16">Pathway</div>
+            <div class="game__path" id="p17">Pathway</div>
+            <div class="game__path" id="p18">Pathway</div>
+            <div class="game__path" id="p19">Pathway</div>
+            <div class="game__path" id="p20">Pathway</div>
+            <div class="game__path" id="p21">Pathway</div>
+            <div class="game__path" id="p22">Pathway</div>
+            <div class="game__path" id="p23">Pathway</div>
+            <div class="game__path" id="p24">Pathway</div>
+            <div class="game__path" id="p25">Pathway</div>
+            <div class="game__path" id="p26">Pathway</div>
+            <div class="game__path" id="p27">Pathway</div>
+            <div class="game__path" id="p28">Pathway</div>
+            <div class="game__path" id="p29">Pathway</div>
 
             <!-- thorn squares -->
             <div class="game__thorns" id="t1">Thorns</div>
@@ -103,6 +111,21 @@
             <div class="game__gate" id="g1">Gateway</div>
             <div class="game__gate" id="g2">Gateway</div>
             <div class="game__gate" id="g3">Gateway</div>
+        </div>
+
+        <div class="movement">
+            <h2>Use these arrow keys to move</h2>
+            <div>
+                <button class="movement__buttons">up</button>
+            </div>
+            <div>
+                <button class="movement__buttons">left</button>
+                <button class="movement__buttons">right</button>
+            </div>
+            <div">
+                <button class="movement__buttons">down</button>
+            </div>
+            
         </div>
     </main>
     
