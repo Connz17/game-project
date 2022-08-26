@@ -21,7 +21,30 @@ nav .top-bar__button {
 }
 
 #game-start {
-  margin: 1rem;
+  margin: 0.5rem;
+  padding: 0.4rem;
+  margin-left: 3rem;
+  font-size: 0.7rem;
+  border-radius: 50px;
+  background-color: rgba(93, 46, 202, 0.8);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.countdown {
+  grid-area: t5;
+  order: 1;
+  font-size: 3rem;
+  text-align: center;
+  color: #f10d0d;
+}
+
+.hitPoints {
+  grid-area: t7;
+  order: 1;
+  font-size: 2rem;
+  text-align: center;
+  color: red;
 }
 
 .game {
@@ -32,18 +55,22 @@ nav .top-bar__button {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
   grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-  gap: 10px;
-  grid-template-areas: "t1 t2 t3 t4 t5 t6 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
+  gap: 5px;
+  grid-template-areas: "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
   background-color: #70757e;
 }
 .game__path {
   background-color: darksalmon;
+  background-image: url(./image/Brick_01.png);
+  background-position: center;
 }
 .game__thorns {
   background-color: darkolivegreen;
+  background-image: url(./image/clipart1332775.png);
 }
 .game__bomb {
   background-color: darksalmon;
+  background-image: url(./image/Brick_04.png);
 }
 .game__gate {
   background-color: dodgerblue;
@@ -375,4 +402,11 @@ nav .top-bar__button {
 }
 .movement__buttons {
   margin: 0.15rem;
+  padding: 0.3rem;
+  width: 3rem;
+  height: 1.7rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  background-color: rgba(93, 46, 202, 0.8);
 }

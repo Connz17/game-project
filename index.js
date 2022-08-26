@@ -30,7 +30,12 @@ console.log(trap);
 const characterMovement = document.querySelectorAll(".movement__buttons")
 console.log(characterMovement); 
 
+// HP and Coutdown
+const characterHP = document.querySelector(".hitPoints")
+console.log(characterHP);
 
+const countdownTimer = document.querySelector(".countdown")
+console.log(countdownTimer);
 
 // Collate collections into arrays
 const pathways = Array.from(pathwaySquares)
@@ -50,6 +55,11 @@ console.log(gateways);
 
 
 
+let timeUp = false;
+let timeLimit = 50000;
+let HP = 500;
+let countdown ;
+
 // event testing
 
 
@@ -62,11 +72,33 @@ console.log(gateways);
 // Handle Start function
 const handleStartGame = () => {
     console.log("game has started");
-    
-    // new player appears at gateway
+    countdown = timeLimit/1000;
+    characterHP.textContent = 500    
+    // characterHP.style.display = "block";
+    countdownTimer.textContent = countdown
+    timeUp = false;
+    HP = 500;
+    setTimeout(() => {
+        timeUp = true;
+    }, timeLimit);
 
+    let startCountdown = setInterval(() => {
+        countdown -= 1
+        countdownTimer.textContent = countdown;
+        if (countdown <0) {
+            countdown = 0;
+            clearInterval(startCountdown);
+            countdownTimer.textContent = "Time is UPP!!"
+        }
+    }, 1000);
+
+    // new player appears at gateway
+    
 };
 
+handleHpLoss = (e) => {
+
+};
 
 
 // handle Character movement
@@ -110,14 +142,26 @@ console.log(e);
 // handle hp loss
 const handleHealth = () => {
     thorns.forEach((thorn) => {
-        thorn.addEventListener("mouseover", () => console.log("ouch -2hp"));
+        thorn.addEventListener("mouseover", () => {
+            HP -= 10;
+            characterHP.textContent = HP;
+            
+            console.log("ouch -20hp")
+        });
     })
-    
+        
+        
     bombs.forEach((bomb) => {
-        bomb.addEventListener("mouseover", () => console.log("BOOOOOM -20hp"));
+        bomb.addEventListener("mouseover", () => { 
+        HP -= 50;
+        characterHP.textContent = HP;        
+        console.log("BOOOOOM -50hp")
+        this.style.backgroundImage = "url(./image/)"
+        });
+
     });
-    
 };
+
 
 // Handle gateway and warping
 const handleTrap = (e) => {

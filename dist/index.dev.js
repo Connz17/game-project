@@ -1,5 +1,7 @@
 "use strict";
 
+var _this = void 0;
+
 // get all game squares
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
@@ -21,7 +23,12 @@ var trap = document.getElementById("g3");
 console.log(trap); // get movement buttons
 
 var characterMovement = document.querySelectorAll(".movement__buttons");
-console.log(characterMovement); // Collate collections into arrays
+console.log(characterMovement); // HP and Coutdown
+
+var characterHP = document.querySelector(".hitPoints");
+console.log(characterHP);
+var countdownTimer = document.querySelector(".countdown");
+console.log(countdownTimer); // Collate collections into arrays
 
 var pathways = Array.from(pathwaySquares);
 console.log(pathways); // const movements = Array.from(characterMovement)
@@ -32,13 +39,38 @@ console.log(bombs);
 var thorns = Array.from(thornSquares);
 console.log(thorns);
 var gateways = Array.from(gatewaySquares);
-console.log(gateways); // event testing
+console.log(gateways);
+var timeUp = false;
+var timeLimit = 50000;
+var HP = 500;
+var countdown; // event testing
 // game functions
 // Handle Start function
 
 var handleStartGame = function handleStartGame() {
-  console.log("game has started"); // new player appears at gateway
-}; // handle Character movement
+  console.log("game has started");
+  countdown = timeLimit / 1000;
+  characterHP.textContent = 500; // characterHP.style.display = "block";
+
+  countdownTimer.textContent = countdown;
+  timeUp = false;
+  HP = 500;
+  setTimeout(function () {
+    timeUp = true;
+  }, timeLimit);
+  var startCountdown = setInterval(function () {
+    countdown -= 1;
+    countdownTimer.textContent = countdown;
+
+    if (countdown < 0) {
+      countdown = 0;
+      clearInterval(startCountdown);
+      countdownTimer.textContent = "Time is UPP!!";
+    }
+  }, 1000); // new player appears at gateway
+};
+
+handleHpLoss = function handleHpLoss(e) {}; // handle Character movement
 
 
 var handlePlayerMovement = function handlePlayerMovement(e) {
@@ -80,12 +112,17 @@ var handlePlayerMovement = function handlePlayerMovement(e) {
 var handleHealth = function handleHealth() {
   thorns.forEach(function (thorn) {
     thorn.addEventListener("mouseover", function () {
-      return console.log("ouch -2hp");
+      HP -= 10;
+      characterHP.textContent = HP;
+      console.log("ouch -20hp");
     });
   });
   bombs.forEach(function (bomb) {
     bomb.addEventListener("mouseover", function () {
-      return console.log("BOOOOOM -20hp");
+      HP -= 50;
+      characterHP.textContent = HP;
+      console.log("BOOOOOM -50hp");
+      _this.style.backgroundImage = "url(./image/)";
     });
   });
 }; // Handle gateway and warping
