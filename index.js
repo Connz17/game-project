@@ -1,5 +1,6 @@
+import { newPlayer } from "./";
 // get player
-const player = document.querySelector(".game__player");
+const  gamePlayer = document.querySelector(".game__player");
 console.log(player);
 
 // get all game squares
@@ -59,6 +60,7 @@ console.log(gateways);
 
 
 
+
 let timeUp = false;
 let timeLimit = 50000;
 let HP = 500;
@@ -108,6 +110,7 @@ const handlePlayerMovement = (e) => {
 console.log(e);
     switch (e.target.value) {
         case "up":
+            player.animate(e.target.value);
             console.log("player moved up");
             break;
         case "left":

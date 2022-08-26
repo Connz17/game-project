@@ -1,0 +1,5 @@
+let player = {
+    name: " ",
+    height: 80,
+    width: 50
+}

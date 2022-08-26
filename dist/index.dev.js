@@ -1,7 +1,7 @@
 "use strict";
 
 // get player
-var player = document.querySelector(".game__player");
+var gamePlayer = document.querySelector(".game__player");
 console.log(player); // get all game squares
 
 var pathwaySquares = document.querySelectorAll(".game__path");
@@ -77,6 +77,7 @@ var handlePlayerMovement = function handlePlayerMovement(e) {
 
   switch (e.target.value) {
     case "up":
+      player.animate(e.target.value);
       console.log("player moved up");
       break;
 
