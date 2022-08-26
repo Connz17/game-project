@@ -1,3 +1,7 @@
+// get player
+const player = document.querySelector(".game__player");
+console.log(player);
+
 // get all game squares
 const pathwaySquares = document.querySelectorAll(".game__path")
 console.log(pathwaySquares);
@@ -31,10 +35,10 @@ const characterMovement = document.querySelectorAll(".movement__buttons")
 console.log(characterMovement); 
 
 // HP and Coutdown
-const characterHP = document.querySelector(".hitPoints")
+const characterHP = document.querySelector(".game__hitPoints")
 console.log(characterHP);
 
-const countdownTimer = document.querySelector(".countdown")
+const countdownTimer = document.querySelector(".game__countdown")
 console.log(countdownTimer);
 
 // Collate collections into arrays

@@ -1,6 +1,9 @@
 "use strict";
 
-// get all game squares
+// get player
+var player = document.querySelector(".game__player");
+console.log(player); // get all game squares
+
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
 var thornSquares = document.querySelectorAll(".game__thorns");
@@ -23,9 +26,9 @@ console.log(trap); // get movement buttons
 var characterMovement = document.querySelectorAll(".movement__buttons");
 console.log(characterMovement); // HP and Coutdown
 
-var characterHP = document.querySelector(".hitPoints");
+var characterHP = document.querySelector(".game__hitPoints");
 console.log(characterHP);
-var countdownTimer = document.querySelector(".countdown");
+var countdownTimer = document.querySelector(".game__countdown");
 console.log(countdownTimer); // Collate collections into arrays
 
 var pathways = Array.from(pathwaySquares);

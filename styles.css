@@ -52,11 +52,32 @@ nav .top-bar__button {
   width: 90vw;
   margin: auto;
   cursor: pointer;
+  text-align: center;
   display: grid;
   grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
   grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
   grid-template-areas: "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
   background-color: #70757e;
+}
+.game__countdown {
+  grid-area: t5;
+  order: 1;
+  font-size: 3rem;
+  text-align: center;
+  color: #f10d0d;
+}
+.game__hitPoints {
+  grid-area: t7;
+  order: 1;
+  font-size: 2rem;
+  text-align: center;
+  color: red;
+}
+.game__player {
+  grid-area: g2;
+  order: 1;
+  margin: auto;
+  border: solid 2px red;
 }
 .game__path {
   background-color: darksalmon;

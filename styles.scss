@@ -58,6 +58,7 @@ nav {
     width: 90vw;
     margin: auto;
     cursor:pointer;
+    text-align: center;
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
@@ -74,12 +75,32 @@ nav {
     ;
 
 
-    
-
-
     background-color: rgb(112, 117, 126);
 
+    &__countdown {
+        grid-area: t5 ;
+        order: 1;
+        font-size: 3rem;
+        text-align: center;
+        color: rgb(241, 13, 13);
+    }
 
+    &__hitPoints {
+        grid-area: t7;
+        order: 1;
+        font-size: 2rem;
+        text-align: center;
+        color: red;
+    }
+
+    &__player {
+        grid-area: g2;
+        order: 1;
+        margin: auto;
+
+        border: solid 2px red;
+    }
+    
     
 
     &__path {
