@@ -1,7 +1,6 @@
-import { newPlayer } from "./";
 // get player
-const  gamePlayer = document.querySelector(".game__player");
-console.log(player);
+let  gamePlayer = document.querySelector(".game__player");
+console.log(gamePlayer);
 
 // get all game squares
 const pathwaySquares = document.querySelectorAll(".game__path")
@@ -66,10 +65,40 @@ let timeLimit = 50000;
 let HP = 500;
 let countdown ;
 
+const moveRight = [
+    { transform: 'translateX(65px)' }
+]
+
+const moveUp = [
+    { transform: 'translateY(-65px)' }
+]
+
+const moveDown = [
+    { transform: `translateY(65px)` }
+]
+
+const moveLeft = [
+    { transform: "translateX(-65px)" }
+]
+
+const frames = {
+    duration: 3000,
+    fill: 'both'
+}
 // event testing
 
+let currentPosX = gamePlayer.offsetTop
+console.log(currentPosX);
+
+let currentPosY = gamePlayer.offsetLeft
+console.log(currentPosY);
+
+this.player = {x: 596, y: 180, color: "red"};
+console.log(this.player);
 
 
+// let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
+// console.log(NewTile);
 
 
 
@@ -107,19 +136,23 @@ const handleStartGame = () => {
 
 // handle Character movement
 const handlePlayerMovement = (e) => {
-console.log(e);
+
+    console.log(e);
     switch (e.target.value) {
         case "up":
-            player.animate(e.target.value);
+            gamePlayer.animate(moveUp, frames);
             console.log("player moved up");
             break;
         case "left":
+            gamePlayer.animate(moveLeft, frames);
             console.log("player moved left");
             break;
         case "right":
+            gamePlayer.animate(moveRight, frames);
             console.log("player moved right");
             break;
         case "down":
+            gamePlayer.animate(moveDown, frames);
             console.log("player moved down");
             break;            
         default:
@@ -210,6 +243,7 @@ startButton.addEventListener("click", handleStartGame);
 // character movement
 characterMovement.forEach((movement) => {
     movement.addEventListener("click", (e) => {
+        
         handlePlayerMovement (e);
         // handleBomb ();
         handleHealth ();

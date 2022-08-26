@@ -2,7 +2,7 @@
 
 // get player
 var gamePlayer = document.querySelector(".game__player");
-console.log(player); // get all game squares
+console.log(gamePlayer); // get all game squares
 
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
@@ -44,7 +44,35 @@ console.log(gateways);
 var timeUp = false;
 var timeLimit = 50000;
 var HP = 500;
-var countdown; // event testing
+var countdown;
+var moveRight = [{
+  transform: 'translateX(65px)'
+}];
+var moveUp = [{
+  transform: 'translateY(-65px)'
+}];
+var moveDown = [{
+  transform: "translateY(65px)"
+}];
+var moveLeft = [{
+  transform: "translateX(-65px)"
+}];
+var frames = {
+  duration: 3000,
+  fill: 'both'
+}; // event testing
+
+var currentPosX = gamePlayer.offsetTop;
+console.log(currentPosX);
+var currentPosY = gamePlayer.offsetLeft;
+console.log(currentPosY);
+(void 0).player = {
+  x: 596,
+  y: 180,
+  color: "red"
+};
+console.log((void 0).player); // let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
+// console.log(NewTile);
 // game functions
 // Handle Start function
 
@@ -77,19 +105,22 @@ var handlePlayerMovement = function handlePlayerMovement(e) {
 
   switch (e.target.value) {
     case "up":
-      player.animate(e.target.value);
+      gamePlayer.animate(moveUp, frames);
       console.log("player moved up");
       break;
 
     case "left":
+      gamePlayer.animate(moveLeft, frames);
       console.log("player moved left");
       break;
 
     case "right":
+      gamePlayer.animate(moveRight, frames);
       console.log("player moved right");
       break;
 
     case "down":
+      gamePlayer.animate(moveDown, frames);
       console.log("player moved down");
       break;
 

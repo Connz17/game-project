@@ -74,10 +74,16 @@ nav .top-bar__button {
   color: red;
 }
 .game__player {
-  grid-area: g2;
-  order: 1;
+  grid-area: p16;
+  order: 2;
   margin: auto;
-  border: solid 2px red;
+  width: 90%;
+  height: 90%;
+  background-image: url(./image/pngkey.com-game-character-png-1066616.png);
+  background-size: 70%;
+  background-position: center;
+  border-radius: 10rem;
+  overflow: hidden;
 }
 .game__path {
   background-color: darksalmon;
@@ -409,19 +415,25 @@ nav .top-bar__button {
 #g1 {
   grid-area: g1;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
+  transform: rotate(90deg);
   background-size: 100%;
+  overflow: hidden;
 }
 
 #g2 {
   grid-area: g2;
   background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
+  transform: rotate(270deg);
   background-size: 100%;
+  transform: translateX();
 }
 
 #g3 {
   grid-area: g3;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
-  background-size: 100%;
+  transform: rotate(180deg);
+  background-size: 75%;
+  max-width: 100%;
 }
 
 .movement {
