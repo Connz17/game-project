@@ -1,7 +1,5 @@
 "use strict";
 
-var _this = void 0;
-
 // get all game squares
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
@@ -55,7 +53,7 @@ var handleStartGame = function handleStartGame() {
   countdownTimer.textContent = countdown;
   timeUp = false;
   HP = 500;
-  setTimeout(function () {
+  setTimeout = (function () {
     timeUp = true;
   }, timeLimit);
   var startCountdown = setInterval(function () {
@@ -68,9 +66,7 @@ var handleStartGame = function handleStartGame() {
       countdownTimer.textContent = "Time is UPP!!";
     }
   }, 1000); // new player appears at gateway
-};
-
-handleHpLoss = function handleHpLoss(e) {}; // handle Character movement
+}; // handle Character movement
 
 
 var handlePlayerMovement = function handlePlayerMovement(e) {
@@ -121,8 +117,13 @@ var handleHealth = function handleHealth() {
     bomb.addEventListener("mouseover", function () {
       HP -= 50;
       characterHP.textContent = HP;
-      console.log("BOOOOOM -50hp");
-      _this.style.backgroundImage = "url(./image/)";
+      console.log("BOOOOOM -50hp"); // this.style.background = `url(./image/y8lb_c1ux_201215.jpg)`;
+      // this.style.backgroundImage = `url(./image/y8lb_c1ux_201215.jpg)`
+      // this.bomb.pointerEvent = "none"
+      // setTimeout = (() => { 
+      // this.style.backgroundImage = "url(./image/Brick_04.png)"
+      // this.bomb.mouseEvents = "auto"
+      // }, 3000);    
     });
   });
 }; // Handle gateway and warping

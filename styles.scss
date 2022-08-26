@@ -5,7 +5,6 @@
 }
 
 
-    
 
 nav {
     display: flex;
@@ -62,7 +61,7 @@ nav {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-    gap: 5px;
+    // gap: 5px;
     grid-template-areas: 
         "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10"
         "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2"
@@ -75,7 +74,6 @@ nav {
     ;
 
 
-    // background-image: url(./image/Gin.No.Fude.full.1486187.jpg);
     
 
 
@@ -88,12 +86,15 @@ nav {
     background-color: darksalmon;
     background-image: url(./image/Brick_01.png);
     background-position: center;
+    background-size: 100%;
 
 }
     
     &__thorns {
     background-color: darkolivegreen;
-    background-image: url(./image/clipart1332775.png);
+    background-image: url(./image/bushes-png-2836.png);
+    background-position: center;
+    background-size: 95%;
     // background: url(./image/clipart1332775.png);
 }
 
@@ -101,10 +102,14 @@ nav {
     &__bomb {
     background-color: darksalmon;
     background-image: url(./image/Brick_04.png);
+    background-size: 100%;
 }    
     
     &__gate {
     background-color:dodgerblue;
+    // background-image: url(./image/sw7i_axtl_201215.jpg);
+    background-size: 100%;
+    background-position: center;
 }
 
 }
@@ -248,9 +253,9 @@ nav {
     grid-area: t5;
 }
 
-#t6 {
-    grid-area: t6;
-}
+// #t6 {
+//     grid-area: t6;
+// }
 
 #t7 {
     grid-area: t7;
@@ -431,17 +436,20 @@ nav {
     
 #g1 {
     grid-area: g1;
-
+    background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
+    background-size: 100%;
 }
 
 #g2 {
     grid-area: g2;
-
+    background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
+    background-size: 100%;
 }
 
 #g3 {
     grid-area: g3;
-
+    background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
+    background-size: 100%;
 } 
     
 

@@ -78,7 +78,7 @@ const handleStartGame = () => {
     countdownTimer.textContent = countdown
     timeUp = false;
     HP = 500;
-    setTimeout(() => {
+    setTimeout = (() => {
         timeUp = true;
     }, timeLimit);
 
@@ -96,9 +96,7 @@ const handleStartGame = () => {
     
 };
 
-handleHpLoss = (e) => {
 
-};
 
 
 // handle Character movement
@@ -156,11 +154,19 @@ const handleHealth = () => {
         HP -= 50;
         characterHP.textContent = HP;        
         console.log("BOOOOOM -50hp")
-        this.style.backgroundImage = "url(./image/)"
-        });
+        // this.style.background = `url(./image/y8lb_c1ux_201215.jpg)`;
+        // this.style.backgroundImage = `url(./image/y8lb_c1ux_201215.jpg)`
+        // this.bomb.pointerEvent = "none"
+        // setTimeout = (() => { 
+            // this.style.backgroundImage = "url(./image/Brick_04.png)"
+            // this.bomb.mouseEvents = "auto"
+
+        // }, 3000);    
+    });
 
     });
 };
+
 
 
 // Handle gateway and warping
