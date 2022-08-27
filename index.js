@@ -1,6 +1,6 @@
 // get player
-let  gamePlayer = document.querySelector(".game__player");
-console.log(gamePlayer);
+let  player = document.querySelector(".game__player");
+console.log(player);
 
 // get all game squares
 const pathwaySquares = document.querySelectorAll(".game__path")
@@ -66,6 +66,7 @@ let HP = 500;
 let countdown ;
 
 const moveRight = [
+    {transform: 'translateX(0px)'},
     { transform: 'translateX(65px)' }
 ]
 
@@ -87,14 +88,29 @@ const frames = {
 }
 // event testing
 
-let currentPosX = gamePlayer.offsetTop
-console.log(currentPosX);
+// let currentPosX = player.offsetLeft
+// console.log(currentPosX);
 
-let currentPosY = gamePlayer.offsetLeft
-console.log(currentPosY);
+// let currentPosY = player.offsetTop
+// console.log(currentPosY);
 
-this.player = {x: 596, y: 180, color: "red"};
-console.log(this.player);
+// let value = player.style.left
+// console.log(value);
+
+const position = () => {
+    let currentX = player.offsetLeft
+    console.log(currentX);
+    
+    
+    player = currentX
+    return player
+};
+
+
+// this.player = {x: 596, y: 180, color: "red"};
+// return this.player
+
+
 
 
 // let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
@@ -136,23 +152,23 @@ const handleStartGame = () => {
 
 // handle Character movement
 const handlePlayerMovement = (e) => {
-
     console.log(e);
     switch (e.target.value) {
         case "up":
-            gamePlayer.animate(moveUp, frames);
+            player.animate(moveUp, frames);
+            console.log(player);
             console.log("player moved up");
             break;
         case "left":
-            gamePlayer.animate(moveLeft, frames);
+            player.animate(moveLeft, frames);
             console.log("player moved left");
             break;
         case "right":
-            gamePlayer.animate(moveRight, frames);
+            player.animate(moveRight, frames)
             console.log("player moved right");
             break;
         case "down":
-            gamePlayer.animate(moveDown, frames);
+            player.animate(moveDown, frames);
             console.log("player moved down");
             break;            
         default:

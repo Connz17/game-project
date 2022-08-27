@@ -1,8 +1,8 @@
 "use strict";
 
 // get player
-var gamePlayer = document.querySelector(".game__player");
-console.log(gamePlayer); // get all game squares
+var player = document.querySelector(".game__player");
+console.log(player); // get all game squares
 
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
@@ -46,6 +46,8 @@ var timeLimit = 50000;
 var HP = 500;
 var countdown;
 var moveRight = [{
+  transform: 'translateX(0px)'
+}, {
   transform: 'translateX(65px)'
 }];
 var moveUp = [{
@@ -61,20 +63,25 @@ var frames = {
   duration: 3000,
   fill: 'both'
 }; // event testing
+// let currentPosX = player.offsetLeft
+// console.log(currentPosX);
+// let currentPosY = player.offsetTop
+// console.log(currentPosY);
+// let value = player.style.left
+// console.log(value);
 
-var currentPosX = gamePlayer.offsetTop;
-console.log(currentPosX);
-var currentPosY = gamePlayer.offsetLeft;
-console.log(currentPosY);
-(void 0).player = {
-  x: 596,
-  y: 180,
-  color: "red"
-};
-console.log((void 0).player); // let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
+var position = function position() {
+  var currentX = player.offsetLeft;
+  console.log(currentX);
+  player = currentX;
+  return player;
+}; // this.player = {x: 596, y: 180, color: "red"};
+// return this.player
+// let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
 // console.log(NewTile);
 // game functions
 // Handle Start function
+
 
 var handleStartGame = function handleStartGame() {
   console.log("game has started");
@@ -105,22 +112,23 @@ var handlePlayerMovement = function handlePlayerMovement(e) {
 
   switch (e.target.value) {
     case "up":
-      gamePlayer.animate(moveUp, frames);
+      player.animate(moveUp, frames);
+      console.log(player);
       console.log("player moved up");
       break;
 
     case "left":
-      gamePlayer.animate(moveLeft, frames);
+      player.animate(moveLeft, frames);
       console.log("player moved left");
       break;
 
     case "right":
-      gamePlayer.animate(moveRight, frames);
+      player.animate(moveRight, frames);
       console.log("player moved right");
       break;
 
     case "down":
-      gamePlayer.animate(moveDown, frames);
+      player.animate(moveDown, frames);
       console.log("player moved down");
       break;
 
