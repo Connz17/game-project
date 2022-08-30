@@ -20,6 +20,14 @@ nav {
     }
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+
+
 .title {
     text-align: center;
 }
@@ -58,10 +66,10 @@ nav {
     width: 90vw;
     margin: auto;
     cursor:pointer;
-    text-align: center;
+
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-    grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-columns: 50px 100px 100px 100px 100px 100px 100px 100px 100px 50px;
+    grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 50px;
     // gap: 5px;
     grid-template-areas: 
         "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10"
@@ -74,6 +82,9 @@ nav {
         "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41"
     ;
 
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
 
     background-color: rgb(112, 117, 126);
 
@@ -97,14 +108,14 @@ nav {
         grid-area: p16;
         order: 2;
         margin: auto;
-        width: 90%;
-        height: 90%;
+        width: 80px;
+        height: 80px;
         background-image: url(./image/pngkey.com-game-character-png-1066616.png);
-        background-size: 70%;
+        background-size: 100%;
         background-position: center;
         border-radius: 10rem;
         overflow: hidden;
-
+        transition: transform 1s linear;
 
 
         // border: solid 2px red;
@@ -467,8 +478,7 @@ nav {
 #g1 {
     grid-area: g1;
     background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
-    transform:rotate(90deg);
-    background-size: 100%;
+    background-size: 100px;
     overflow: hidden;
     
 }
@@ -476,17 +486,18 @@ nav {
 #g2 {
     grid-area: g2;
     background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
-    transform:rotate(270deg);
-    background-size: 100%;
-    transform: translateX();
+    transform:rotate();
+    background-size: 100px;
+
+    overflow: hidden;
 }
 
 #g3 {
     grid-area: g3;
     background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
     transform:rotate(180deg);
-    background-size: 75%;
     max-width: 100%;
+    background-size: 100px;
 } 
     
 
@@ -511,3 +522,4 @@ nav {
     
     
     
+}

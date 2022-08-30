@@ -15,9 +15,14 @@ console.log(bombSquares);
 const gatewaySquares = document.querySelectorAll(".game__gate");
 console.log(gatewaySquares);
 
+
+const winWindow = document.querySelector(".game-win");
+
 // get start button
 const startButton = document.getElementById("game-start")
 console.log(startButton);
+
+const ReStart = document.getElementById("game-redo")
 
 // get gateway, finish and trap buttons
 const gateway = document.querySelector("g2")
@@ -30,9 +35,9 @@ const trap = document.getElementById("g3")
 console.log(trap);
 
 
-// get movement buttons
-const characterMovement = document.querySelectorAll(".movement__buttons")
-console.log(characterMovement); 
+// get Display buttons
+const displayBoard = document.querySelector(".display__board")
+console.log(displayBoard); 
 
 // HP and Coutdown
 const characterHP = document.querySelector(".game__hitPoints")
@@ -92,7 +97,7 @@ const handleStartGame = () => {
         if (countdown <0) {
             countdown = 0;
             clearInterval(startCountdown);
-            countdownTimer.textContent = "Time is UPP!!"
+            displayBoard.textContent = "Time is UPP!!"
         }
     }, 1000);
 
@@ -147,28 +152,27 @@ const handleHealth = () => {
         thorn.addEventListener("mouseover", () => {
             HP -= 10;
             characterHP.textContent = HP;
-            
+            displayBoard.textContent = "Ouch! Watch out for them Thorns!"
             console.log("ouch -20hp")
         });
-    })
-        
-        
+    })                
     bombs.forEach((bomb) => {
         bomb.addEventListener("mouseover", () => { 
         HP -= 50;
         characterHP.textContent = HP;        
         console.log("BOOOOOM -50hp")
-        // this.style.background = `url(./image/y8lb_c1ux_201215.jpg)`;
-        // this.style.backgroundImage = `url(./image/y8lb_c1ux_201215.jpg)`
+        displayBoard.textContent = "BOOOM Watch your step"
         // this.bomb.pointerEvent = "none"
         // setTimeout = (() => { 
-            // this.style.backgroundImage = "url(./image/Brick_04.png)"
-            // this.bomb.mouseEvents = "auto"
-
-        // }, 3000);    
+        //     this.bomb.pointerEvents = "auto"
+        // }, 10000);    
     });
-
     });
+    if (HP <0) {
+        HP = 0;
+        displayBoard.textContent = "You ran out of health...unlucky. Maybe next time be more cautious"
+    } 
+
 };
 
 
@@ -191,7 +195,13 @@ const handleWin = () => {
     //     console.log("Congratulation you WON!")
     // }
     finish.addEventListener("mouseover", () => {
-        console.log("Congratulation you WON!")
+        
+        winWindow.classList.add("show")
+        winWindow.innerHTML += `
+       <div class="win-health"> you had ${HP} remaining</div>
+       <div> you had ${timeLimit} seconds remaining</div>
+       `        
+        displayBoard.textContent = "Winner Winner Winner!"
 });
 
 }
@@ -202,19 +212,24 @@ const handleWin = () => {
 // initiate Start
 startButton.addEventListener("click", handleStartGame);
 
+ReStart.addEventListener("click", () => {
+    window.location.reload();
+})
+
+
 
 
 // character movement
-characterMovement.forEach((movement) => {
-    movement.addEventListener("click", (e) => {
-        handlePlayerMovement (e);
-        // handleBomb ();
-        handleHealth ();
-        handleWin ();
-        handleTrap ();
-    })
+// characterMovement.forEach((movement) => {
+//     movement.addEventListener("click", (e) => {
+//         handlePlayerMovement (e);
+//         // handleBomb ();
+//         handleHealth ();
+//         handleWin ();
+//         handleTrap ();
+//     })
     
-});
+// });
 
 
 // thorn interaction

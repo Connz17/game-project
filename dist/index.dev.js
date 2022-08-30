@@ -41,34 +41,48 @@ var thorns = Array.from(thornSquares);
 console.log(thorns);
 var gateways = Array.from(gatewaySquares);
 console.log(gateways);
+var X = 0;
+var Y = 0;
 var timeUp = false;
 var timeLimit = 50000;
 var HP = 500;
 var countdown;
+
+var right = function right() {
+  player.style.transform = "translate(".concat(X += 65, "px, ").concat(Y, "px)");
+};
+
 var moveRight = [{
-  transform: 'translateX(0px)'
-}, {
-  transform: 'translateX(65px)'
+  transform: "translate(".concat(X += 65, "px, ").concat(Y, "px)")
 }];
 var moveUp = [{
-  transform: 'translateY(-65px)'
+  transform: "translate(".concat(X, "px, ").concat(Y -= 65, "px)")
 }];
 var moveDown = [{
-  transform: "translateY(65px)"
+  transform: "translate(".concat(X, "px, ").concat(Y += 65, "px)")
 }];
 var moveLeft = [{
-  transform: "translateX(-65px)"
+  transform: "translate(".concat(X -= 65, "px, ").concat(Y, "px)")
 }];
 var frames = {
   duration: 3000,
-  fill: 'both'
+  fill: 'forwards'
 }; // event testing
-// let currentPosX = player.offsetLeft
+
+var loop;
+var fps = 60;
+var grid, token;
+
+prepareGrid = function prepareGrid() {
+  grid = document.getElementsByClassName(".game")[0];
+  token = grid.getContext('2d');
+}; // let currentPosX = player.offsetLeft
 // console.log(currentPosX);
 // let currentPosY = player.offsetTop
 // console.log(currentPosY);
 // let value = player.style.left
 // console.log(value);
+
 
 var position = function position() {
   var currentX = player.offsetLeft;
@@ -80,11 +94,23 @@ var position = function position() {
 // let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
 // console.log(NewTile);
 // game functions
-// Handle Start function
+
+
+update = function update() {
+  console.log("updating");
+};
+
+render = function render() {
+  console.log("rendering");
+}; // Handle Start function
 
 
 var handleStartGame = function handleStartGame() {
   console.log("game has started");
+  loop = setInterval(function () {
+    update();
+    render();
+  }, 1000 / fps);
   countdown = timeLimit / 1000;
   characterHP.textContent = 500; // characterHP.style.display = "block";
 
@@ -112,23 +138,23 @@ var handlePlayerMovement = function handlePlayerMovement(e) {
 
   switch (e.target.value) {
     case "up":
-      player.animate(moveUp, frames);
+      player.style.transform = "translate(".concat(X, "px, ").concat(Y -= 100, "px)");
       console.log(player);
       console.log("player moved up");
       break;
 
     case "left":
-      player.animate(moveLeft, frames);
+      player.style.transform = "translate(".concat(X -= 100, "px, ").concat(Y, "px)");
       console.log("player moved left");
       break;
 
     case "right":
-      player.animate(moveRight, frames);
+      player.style.transform = "translate(".concat(X += 100, "px, ").concat(Y, "px)");
       console.log("player moved right");
       break;
 
     case "down":
-      player.animate(moveDown, frames);
+      player.style.transform = "translate(".concat(X, "px, ").concat(Y += 100, "px)");
       console.log("player moved down");
       break;
 
@@ -196,6 +222,7 @@ startButton.addEventListener("click", handleStartGame); // character movement
 
 characterMovement.forEach(function (movement) {
   movement.addEventListener("click", function (e) {
+    e.preventDefault();
     handlePlayerMovement(e); // handleBomb ();
 
     handleHealth();

@@ -58,6 +58,9 @@ const gateways = Array.from(gatewaySquares);
 console.log(gateways);
 
 
+let X = 0 
+
+let Y = 0
 
 
 let timeUp = false;
@@ -65,28 +68,44 @@ let timeLimit = 50000;
 let HP = 500;
 let countdown ;
 
-const moveRight = [
-    {transform: 'translateX(0px)'},
-    { transform: 'translateX(65px)' }
+let right = () => {
+    player.style.transform = `translate(${X+=65}px, ${Y}px)`
+}  
+
+let moveRight = [
+    { transform: `translate(${X+=65}px, ${Y}px)` }
 ]
 
-const moveUp = [
-    { transform: 'translateY(-65px)' }
+let moveUp = [
+    { transform: `translate(${X}px, ${Y-=65}px)` }
 ]
 
-const moveDown = [
-    { transform: `translateY(65px)` }
+let moveDown = [
+    { transform: `translate(${X}px, ${Y+=65}px)` }
 ]
 
-const moveLeft = [
-    { transform: "translateX(-65px)" }
+let moveLeft = [
+    { transform: `translate(${X-=65}px, ${Y}px)` }
 ]
+
+
 
 const frames = {
     duration: 3000,
-    fill: 'both'
+    fill: 'forwards'
 }
 // event testing
+
+let loop
+let fps = 60;
+
+let grid, token;
+
+
+prepareGrid = () => {
+    grid = document.getElementsByClassName(".game")[0];
+    token = grid.getContext('2d');
+}
 
 // let currentPosX = player.offsetLeft
 // console.log(currentPosX);
@@ -120,9 +139,26 @@ const position = () => {
 
 // game functions
 
+
+update = () => {
+    console.log("updating");
+}
+
+render = () => {
+    console.log("rendering");
+}
+
+
+
 // Handle Start function
 const handleStartGame = () => {
     console.log("game has started");
+    loop = setInterval(() => {
+        update();
+        render();
+    }, 1000/fps);
+
+
     countdown = timeLimit/1000;
     characterHP.textContent = 500    
     // characterHP.style.display = "block";
@@ -155,20 +191,21 @@ const handlePlayerMovement = (e) => {
     console.log(e);
     switch (e.target.value) {
         case "up":
-            player.animate(moveUp, frames);
+            player.style.transform = `translate(${X}px, ${Y-=100}px)`
             console.log(player);
             console.log("player moved up");
             break;
         case "left":
-            player.animate(moveLeft, frames);
+            player.style.transform = `translate(${X-=100}px, ${Y}px)`
             console.log("player moved left");
             break;
         case "right":
-            player.animate(moveRight, frames)
-            console.log("player moved right");
+            player.style.transform = `translate(${X+=100}px, ${Y}px)`
+            console.log("player moved right")
+            
             break;
         case "down":
-            player.animate(moveDown, frames);
+            player.style.transform = `translate(${X}px, ${Y+=100}px)`
             console.log("player moved down");
             break;            
         default:
@@ -259,7 +296,7 @@ startButton.addEventListener("click", handleStartGame);
 // character movement
 characterMovement.forEach((movement) => {
     movement.addEventListener("click", (e) => {
-        
+        e.preventDefault();
         handlePlayerMovement (e);
         // handleBomb ();
         handleHealth ();

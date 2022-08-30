@@ -16,11 +16,16 @@ nav .top-bar__button {
   margin: 0.5rem;
 }
 
-.title {
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main .title {
   text-align: center;
 }
-
-#game-start {
+main #game-start {
   margin: 0.5rem;
   padding: 0.4rem;
   margin-left: 3rem;
@@ -30,417 +35,333 @@ nav .top-bar__button {
   cursor: pointer;
   font-weight: 700;
 }
-
-.countdown {
+main .countdown {
   grid-area: t5;
   order: 1;
   font-size: 3rem;
   text-align: center;
   color: #f10d0d;
 }
-
-.hitPoints {
+main .hitPoints {
   grid-area: t7;
   order: 1;
   font-size: 2rem;
   text-align: center;
   color: red;
 }
-
-.game {
+main .game {
   height: 70vh;
   width: 90vw;
   margin: auto;
   cursor: pointer;
-  text-align: center;
   display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-  grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-columns: 50px 100px 100px 100px 100px 100px 100px 100px 100px 50px;
+  grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 50px;
   grid-template-areas: "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
   background-color: #70757e;
 }
-.game__countdown {
+main .game__countdown {
   grid-area: t5;
   order: 1;
   font-size: 3rem;
   text-align: center;
   color: #f10d0d;
 }
-.game__hitPoints {
+main .game__hitPoints {
   grid-area: t7;
   order: 1;
   font-size: 2rem;
   text-align: center;
   color: red;
 }
-.game__player {
+main .game__player {
   grid-area: p16;
   order: 2;
   margin: auto;
-  width: 90%;
-  height: 90%;
+  width: 80px;
+  height: 80px;
   background-image: url(./image/pngkey.com-game-character-png-1066616.png);
-  background-size: 70%;
+  background-size: 100%;
   background-position: center;
   border-radius: 10rem;
   overflow: hidden;
+  transition: transform 1s linear;
 }
-.game__path {
+main .game__path {
   background-color: darksalmon;
   background-image: url(./image/Brick_01.png);
   background-position: center;
   background-size: 100%;
 }
-.game__thorns {
+main .game__thorns {
   background-color: darkolivegreen;
   background-image: url(./image/bushes-png-2836.png);
   background-position: center;
   background-size: 95%;
 }
-.game__bomb {
+main .game__bomb {
   background-color: darksalmon;
   background-image: url(./image/Brick_04.png);
   background-size: 100%;
 }
-.game__gate {
+main .game__gate {
   background-color: dodgerblue;
   background-size: 100%;
   background-position: center;
 }
-
-#p1 {
+main #p1 {
   grid-area: p1;
 }
-
-#p2 {
+main #p2 {
   grid-area: p2;
 }
-
-#p3 {
+main #p3 {
   grid-area: p3;
 }
-
-#p4 {
+main #p4 {
   grid-area: p4;
 }
-
-#p5 {
+main #p5 {
   grid-area: p5;
 }
-
-#p6 {
+main #p6 {
   grid-area: p6;
 }
-
-#p7 {
+main #p7 {
   grid-area: p7;
 }
-
-#p8 {
+main #p8 {
   grid-area: p8;
 }
-
-#p9 {
+main #p9 {
   grid-area: p9;
 }
-
-#p10 {
+main #p10 {
   grid-area: p10;
 }
-
-#p11 {
+main #p11 {
   grid-area: p11;
 }
-
-#p12 {
+main #p12 {
   grid-area: p12;
 }
-
-#p13 {
+main #p13 {
   grid-area: p13;
 }
-
-#p14 {
+main #p14 {
   grid-area: p14;
 }
-
-#p15 {
+main #p15 {
   grid-area: p15;
 }
-
-#p16 {
+main #p16 {
   grid-area: p16;
 }
-
-#p17 {
+main #p17 {
   grid-area: p17;
 }
-
-#p18 {
+main #p18 {
   grid-area: p18;
 }
-
-#p19 {
+main #p19 {
   grid-area: p19;
 }
-
-#p20 {
+main #p20 {
   grid-area: p20;
 }
-
-#p21 {
+main #p21 {
   grid-area: p21;
 }
-
-#p22 {
+main #p22 {
   grid-area: p22;
 }
-
-#p23 {
+main #p23 {
   grid-area: p23;
 }
-
-#p24 {
+main #p24 {
   grid-area: p24;
 }
-
-#p25 {
+main #p25 {
   grid-area: p25;
 }
-
-#p26 {
+main #p26 {
   grid-area: p26;
 }
-
-#p27 {
+main #p27 {
   grid-area: p27;
 }
-
-#p28 {
+main #p28 {
   grid-area: p28;
 }
-
-#p29 {
+main #p29 {
   grid-area: p29;
 }
-
-#t1 {
+main #t1 {
   grid-area: t1;
 }
-
-#t2 {
+main #t2 {
   grid-area: t2;
 }
-
-#t3 {
+main #t3 {
   grid-area: t3;
 }
-
-#t4 {
+main #t4 {
   grid-area: t4;
 }
-
-#t5 {
+main #t5 {
   grid-area: t5;
 }
-
-#t7 {
+main #t7 {
   grid-area: t7;
 }
-
-#t8 {
+main #t8 {
   grid-area: t8;
 }
-
-#t9 {
+main #t9 {
   grid-area: t9;
 }
-
-#t10 {
+main #t10 {
   grid-area: t10;
 }
-
-#t11 {
+main #t11 {
   grid-area: t11;
 }
-
-#t12 {
+main #t12 {
   grid-area: t12;
 }
-
-#t13 {
+main #t13 {
   grid-area: t13;
 }
-
-#t14 {
+main #t14 {
   grid-area: t14;
 }
-
-#t15 {
+main #t15 {
   grid-area: t15;
 }
-
-#t16 {
+main #t16 {
   grid-area: t16;
 }
-
-#t17 {
+main #t17 {
   grid-area: t17;
 }
-
-#t18 {
+main #t18 {
   grid-area: t18;
 }
-
-#t19 {
+main #t19 {
   grid-area: t19;
 }
-
-#t20 {
+main #t20 {
   grid-area: t20;
 }
-
-#t21 {
+main #t21 {
   grid-area: t21;
 }
-
-#t22 {
+main #t22 {
   grid-area: t22;
 }
-
-#t23 {
+main #t23 {
   grid-area: t23;
 }
-
-#t24 {
+main #t24 {
   grid-area: t24;
 }
-
-#t25 {
+main #t25 {
   grid-area: t25;
 }
-
-#t26 {
+main #t26 {
   grid-area: t26;
 }
-
-#t27 {
+main #t27 {
   grid-area: t27;
 }
-
-#t28 {
+main #t28 {
   grid-area: t28;
 }
-
-#t29 {
+main #t29 {
   grid-area: t29;
 }
-
-#t30 {
+main #t30 {
   grid-area: t30;
 }
-
-#t31 {
+main #t31 {
   grid-area: t31;
 }
-
-#t32 {
+main #t32 {
   grid-area: t32;
 }
-
-#t33 {
+main #t33 {
   grid-area: t33;
 }
-
-#t34 {
+main #t34 {
   grid-area: t34;
 }
-
-#t35 {
+main #t35 {
   grid-area: t35;
 }
-
-#t36 {
+main #t36 {
   grid-area: t36;
 }
-
-#t37 {
+main #t37 {
   grid-area: t37;
 }
-
-#t38 {
+main #t38 {
   grid-area: t38;
 }
-
-#t39 {
+main #t39 {
   grid-area: t39;
 }
-
-#t40 {
+main #t40 {
   grid-area: t40;
 }
-
-#t41 {
+main #t41 {
   grid-area: t41;
 }
-
-#b1 {
+main #b1 {
   grid-area: b1;
 }
-
-#b2 {
+main #b2 {
   grid-area: b2;
 }
-
-#b3 {
+main #b3 {
   grid-area: b3;
 }
-
-#b4 {
+main #b4 {
   grid-area: b4;
 }
-
-#b5 {
+main #b5 {
   grid-area: b5;
 }
-
-#b6 {
+main #b6 {
   grid-area: b6;
 }
-
-#b7 {
+main #b7 {
   grid-area: b7;
 }
-
-#g1 {
+main #g1 {
   grid-area: g1;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
-  transform: rotate(90deg);
-  background-size: 100%;
+  background-size: 100px;
   overflow: hidden;
 }
-
-#g2 {
+main #g2 {
   grid-area: g2;
   background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
-  transform: rotate(270deg);
-  background-size: 100%;
-  transform: translateX();
+  transform: rotate();
+  background-size: 100px;
+  overflow: hidden;
 }
-
-#g3 {
+main #g3 {
   grid-area: g3;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
   transform: rotate(180deg);
-  background-size: 75%;
   max-width: 100%;
+  background-size: 100px;
 }
-
-.movement {
+main .movement {
   height: 20vh;
   text-align: center;
 }
-.movement__buttons {
+main .movement__buttons {
   margin: 0.15rem;
   padding: 0.3rem;
   width: 3rem;

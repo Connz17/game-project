@@ -11,20 +11,22 @@ console.log(thornSquares);
 var bombSquares = document.querySelectorAll(".game__bomb");
 console.log(bombSquares);
 var gatewaySquares = document.querySelectorAll(".game__gate");
-console.log(gatewaySquares); // get start button
+console.log(gatewaySquares);
+var winWindow = document.querySelector(".game-win"); // get start button
 
 var startButton = document.getElementById("game-start");
-console.log(startButton); // get gateway, finish and trap buttons
+console.log(startButton);
+var ReStart = document.getElementById("game-redo"); // get gateway, finish and trap buttons
 
 var gateway = document.querySelector("g2");
 console.log(gateway);
 var finish = document.getElementById("g1");
 console.log(finish);
 var trap = document.getElementById("g3");
-console.log(trap); // get movement buttons
+console.log(trap); // get Display buttons
 
-var characterMovement = document.querySelectorAll(".movement__buttons");
-console.log(characterMovement); // HP and Coutdown
+var displayBoard = document.querySelector(".display__board");
+console.log(displayBoard); // HP and Coutdown
 
 var characterHP = document.querySelector(".game__hitPoints");
 console.log(characterHP);
@@ -66,7 +68,7 @@ var handleStartGame = function handleStartGame() {
     if (countdown < 0) {
       countdown = 0;
       clearInterval(startCountdown);
-      countdownTimer.textContent = "Time is UPP!!";
+      displayBoard.textContent = "Time is UPP!!";
     }
   }, 1000); // new player appears at gateway
 }; // handle Character movement
@@ -113,6 +115,7 @@ var handleHealth = function handleHealth() {
     thorn.addEventListener("mouseover", function () {
       HP -= 10;
       characterHP.textContent = HP;
+      displayBoard.textContent = "Ouch! Watch out for them Thorns!";
       console.log("ouch -20hp");
     });
   });
@@ -120,15 +123,18 @@ var handleHealth = function handleHealth() {
     bomb.addEventListener("mouseover", function () {
       HP -= 50;
       characterHP.textContent = HP;
-      console.log("BOOOOOM -50hp"); // this.style.background = `url(./image/y8lb_c1ux_201215.jpg)`;
-      // this.style.backgroundImage = `url(./image/y8lb_c1ux_201215.jpg)`
-      // this.bomb.pointerEvent = "none"
+      console.log("BOOOOOM -50hp");
+      displayBoard.textContent = "BOOOM Watch your step"; // this.bomb.pointerEvent = "none"
       // setTimeout = (() => { 
-      // this.style.backgroundImage = "url(./image/Brick_04.png)"
-      // this.bomb.mouseEvents = "auto"
-      // }, 3000);    
+      //     this.bomb.pointerEvents = "auto"
+      // }, 10000);    
     });
   });
+
+  if (HP < 0) {
+    HP = 0;
+    displayBoard.textContent = "You ran out of health...unlucky. Maybe next time be more cautious";
+  }
 }; // Handle gateway and warping
 
 
@@ -147,22 +153,27 @@ var handleWin = function handleWin() {
   //     console.log("Congratulation you WON!")
   // }
   finish.addEventListener("mouseover", function () {
-    console.log("Congratulation you WON!");
+    winWindow.classList.add("show");
+    winWindow.innerHTML += "\n       <div class=\"win-health\"> you had ".concat(HP, " remaining</div>\n       <div> you had ").concat(timeLimit, " seconds remaining</div>\n       ");
+    displayBoard.textContent = "Winner Winner Winner!";
   });
 }; // initiate Start
 
 
-startButton.addEventListener("click", handleStartGame); // character movement
-
-characterMovement.forEach(function (movement) {
-  movement.addEventListener("click", function (e) {
-    handlePlayerMovement(e); // handleBomb ();
-
-    handleHealth();
-    handleWin();
-    handleTrap();
-  });
-}); // thorn interaction
+startButton.addEventListener("click", handleStartGame);
+ReStart.addEventListener("click", function () {
+  window.location.reload();
+}); // character movement
+// characterMovement.forEach((movement) => {
+//     movement.addEventListener("click", (e) => {
+//         handlePlayerMovement (e);
+//         // handleBomb ();
+//         handleHealth ();
+//         handleWin ();
+//         handleTrap ();
+//     })
+// });
+// thorn interaction
 // Function test
 // handleBomb ()
 
