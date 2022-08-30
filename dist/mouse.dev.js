@@ -1,9 +1,7 @@
 "use strict";
 
 // get player
-var player = document.querySelector(".game__player");
-console.log(player); // get all game squares
-
+// get all game squares
 var pathwaySquares = document.querySelectorAll(".game__path");
 console.log(pathwaySquares);
 var thornSquares = document.querySelectorAll(".game__thorns");
@@ -12,7 +10,7 @@ var bombSquares = document.querySelectorAll(".game__bomb");
 console.log(bombSquares);
 var gatewaySquares = document.querySelectorAll(".game__gate");
 console.log(gatewaySquares);
-var winWindow = document.querySelector(".game-win"); // get start button
+var endWindow = document.querySelector(".game-end"); // get start  and restart button
 
 var startButton = document.getElementById("game-start");
 console.log(startButton);
@@ -23,10 +21,10 @@ console.log(gateway);
 var finish = document.getElementById("g1");
 console.log(finish);
 var trap = document.getElementById("g3");
-console.log(trap); // get Display buttons
+console.log(trap); // get Display 
 
 var displayBoard = document.querySelector(".display__board");
-console.log(displayBoard); // HP and Coutdown
+console.log(displayBoard); // HP and Countdown
 
 var characterHP = document.querySelector(".game__hitPoints");
 console.log(characterHP);
@@ -34,9 +32,7 @@ var countdownTimer = document.querySelector(".game__countdown");
 console.log(countdownTimer); // Collate collections into arrays
 
 var pathways = Array.from(pathwaySquares);
-console.log(pathways); // const movements = Array.from(characterMovement)
-// console.log(movements);
-
+console.log(pathways);
 var bombs = Array.from(bombSquares);
 console.log(bombs);
 var thorns = Array.from(thornSquares);
@@ -44,8 +40,8 @@ console.log(thorns);
 var gateways = Array.from(gatewaySquares);
 console.log(gateways);
 var timeUp = false;
-var timeLimit = 50000;
-var HP = 500;
+var timeLimit = 25000;
+var HP = 350;
 var countdown; // event testing
 // game functions
 // Handle Start function
@@ -53,11 +49,10 @@ var countdown; // event testing
 var handleStartGame = function handleStartGame() {
   console.log("game has started");
   countdown = timeLimit / 1000;
-  characterHP.textContent = 500; // characterHP.style.display = "block";
-
+  characterHP.textContent = HP;
   countdownTimer.textContent = countdown;
   timeUp = false;
-  HP = 500;
+  HP = 350;
   setTimeout = (function () {
     timeUp = true;
   }, timeLimit);
@@ -67,116 +62,107 @@ var handleStartGame = function handleStartGame() {
 
     if (countdown < 0) {
       countdown = 0;
+      endWindow.classList.add("show");
+      endWindow.style.backgroundColor = "red";
+      endWindow.innerHTML = "\n            <h1>OH Noooo!</h1>\n            <h2>You've ran out of time</h2>\n            <h2>Maybe next time go a bit faster but remember be cautious</h2>\n            <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n            <button id=\"remove\">Back to Game</button>\n            ");
+      var reFresh = document.getElementById("remove");
+      reFresh.addEventListener("click", function () {
+        window.location.reload();
+      });
       clearInterval(startCountdown);
       displayBoard.textContent = "Time is UPP!!";
     }
-  }, 1000); // new player appears at gateway
-}; // handle Character movement
-
-
-var handlePlayerMovement = function handlePlayerMovement(e) {
-  console.log(e);
-
-  switch (e.target.value) {
-    case "up":
-      console.log("player moved up");
-      break;
-
-    case "left":
-      console.log("player moved left");
-      break;
-
-    case "right":
-      console.log("player moved right");
-      break;
-
-    case "down":
-      console.log("player moved down");
-      break;
-
-    default:
-      console.log("no movement");
-      break;
-  }
-}; // handle bomb Square
-// const handleBomb = () => {
-//     // if (player.target === bombs) {
-//     //     alert("You have blown up");
-//     // }
-// bombs.forEach((bomb) => {
-//     bomb.addEventListener("mouseover", () => console.log("BOOOOOM"));
-// });
-// };
-// handle hp loss
+  }, 1000);
+}; // handle hp loss
 
 
 var handleHealth = function handleHealth() {
   thorns.forEach(function (thorn) {
     thorn.addEventListener("mouseover", function () {
-      HP -= 10;
+      HP -= 30;
       characterHP.textContent = HP;
-      displayBoard.textContent = "Ouch! Watch out for them Thorns!";
-      console.log("ouch -20hp");
+
+      if (HP <= 0) {
+        endWindow.classList.add("show");
+        endWindow.style.backgroundColor = "red";
+        endWindow.innerHTML = "\n                <h1>OH Noooo!</h1>\n                <h2>You've ran out of health</h2>\n                <h2>Maybe next time go a bit slower and be more cautious</h2>\n                <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n                <button id=\"remove\">Back to Game</button>\n                ");
+        var reFresh = document.getElementById("remove");
+        reFresh.addEventListener("click", function () {
+          window.location.reload();
+        });
+      }
+
+      displayBoard.innerHTML = "\n            <h1>Ouch! Watch out for them Thorns!</h1> \n            <h2>Thats minus 30 HP...</h2> \n            <h2>Only ".concat(HP, " HP remaining</h2>");
     });
   });
   bombs.forEach(function (bomb) {
     bomb.addEventListener("mouseover", function () {
-      HP -= 50;
+      HP -= 70;
       characterHP.textContent = HP;
-      console.log("BOOOOOM -50hp");
-      displayBoard.textContent = "BOOOM Watch your step"; // this.bomb.pointerEvent = "none"
-      // setTimeout = (() => { 
-      //     this.bomb.pointerEvents = "auto"
-      // }, 10000);    
+
+      if (HP <= 0) {
+        endWindow.classList.add("show");
+        endWindow.style.backgroundImage = "url(./image/y8lb_c1ux_201215.jpg";
+        endWindow.style.backgroundSize = "100%";
+        endWindow.style.backgroundPosition = "center";
+        endWindow.style.color = "blue";
+        endWindow.innerHTML = "\n            <h1>BOOOOOM!</h1>\n            <h2>You've gone and got yourself blown up</h2>\n            <h2>Maybe next time be a bit more cautious</h2>\n            <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n            <button id=\"remove\">Back to Game</button>\n            ");
+        var reFresh = document.getElementById("remove");
+        reFresh.addEventListener("click", function () {
+          window.location.reload();
+        });
+      }
+
+      displayBoard.innerHTML = "\n            <h1>BOOM! Watch your step!</h1> \n            <h2>Thats minus 70 HP...</h2> \n            <h2>Only ".concat(HP, " HP remaining</h2>");
     });
   });
-
-  if (HP < 0) {
-    HP = 0;
-    displayBoard.textContent = "You ran out of health...unlucky. Maybe next time be more cautious";
-  }
-}; // Handle gateway and warping
+}; // Handle trap
 
 
 var handleTrap = function handleTrap(e) {
-  // if (payer.target = trap) {
-  //     console.log("Genjutsu trap")
-  // }
   trap.addEventListener("mouseover", function (e) {
     console.log("Caught in a Genjutsu trap");
+    endWindow.classList.add("show");
+    endWindow.style.backgroundColor = "midnightblue";
+    endWindow.innerHTML = "\n        <h1>Unlucky</h1>\n        <h2>It seems like you got fooled and ended up caught in the trap</h2>\n        <h2>Keep on the look out for false doors next time</h2>\n        <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n        <button id=\"remove\">Back to Game</button>\n        ");
+    var reFresh = document.getElementById("remove");
+    reFresh.addEventListener("click", function () {
+      window.location.reload();
+    });
   });
 }; // Handle winning
 
 
 var handleWin = function handleWin() {
-  // if (payer.target = finish) {
-  //     console.log("Congratulation you WON!")
-  // }
   finish.addEventListener("mouseover", function () {
-    winWindow.classList.add("show");
-    winWindow.innerHTML += "\n       <div class=\"win-health\"> you had ".concat(HP, " remaining</div>\n       <div> you had ").concat(timeLimit, " seconds remaining</div>\n       ");
+    endWindow.classList.add("show");
+    endWindow.innerHTML += "\n        <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n        <button id=\"remove\">Back to Game</button>\n        ");
+    var reFresh = document.getElementById("remove");
+    reFresh.addEventListener("click", function () {
+      window.location.reload();
+    });
     displayBoard.textContent = "Winner Winner Winner!";
   });
+};
+
+var handleLoss = function handleLoss() {
+  if (HP <= 0) {
+    endWindow.classList.add("show");
+    endWindow.style.backgroundColor = "red";
+    endWindow.innerHTML = "\n        <h1>OH Noooo!</h1>\n        <h2>You've ran out of health</h2>\n        <h2>KMaybe next time go a bit slower and be more cautious</h2>\n        <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n        <button id=\"remove\">Back to Game</button>\n        ");
+    var reFresh = document.getElementById("remove");
+    reFresh.addEventListener("click", function () {
+      window.location.reload();
+    });
+  }
 }; // initiate Start
 
 
 startButton.addEventListener("click", handleStartGame);
 ReStart.addEventListener("click", function () {
   window.location.reload();
-}); // character movement
-// characterMovement.forEach((movement) => {
-//     movement.addEventListener("click", (e) => {
-//         handlePlayerMovement (e);
-//         // handleBomb ();
-//         handleHealth ();
-//         handleWin ();
-//         handleTrap ();
-//     })
-// });
-// thorn interaction
-// Function test
-// handleBomb ()
-
+});
 handleHealth();
 handleTrap();
 handleWin();
+handleLoss();

@@ -519,7 +519,7 @@ nav {
     }
 
 
-.game-win {
+.game-end {
     display: none;
     top: 0;
     bottom: 0;
@@ -529,12 +529,30 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: dimgrey;
-    opacity: .7;
-
+    background-color: darkgreen;
+    opacity: .9;
+    font-size: large;
+    color: white;
 
 }
 
-.game-win.show {
+.win-health {
+    color:brown
+
+}
+
+#remove {
+    margin: .5rem;
+    padding: .4rem;
+    margin-left: 3rem;
+    font-size: .7rem;
+    border-radius: 50px;
+    background-color: rgba(93, 46, 202, 0.8);
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 1;
+}
+
+.game-end.show {
     display: flex;
 }

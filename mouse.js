@@ -1,6 +1,5 @@
 // get player
-const player = document.querySelector(".game__player");
-console.log(player);
+
 
 // get all game squares
 const pathwaySquares = document.querySelectorAll(".game__path")
@@ -16,13 +15,15 @@ const gatewaySquares = document.querySelectorAll(".game__gate");
 console.log(gatewaySquares);
 
 
-const winWindow = document.querySelector(".game-win");
+const endWindow = document.querySelector(".game-end");
 
-// get start button
+// get start  and restart button
 const startButton = document.getElementById("game-start")
 console.log(startButton);
 
 const ReStart = document.getElementById("game-redo")
+
+
 
 // get gateway, finish and trap buttons
 const gateway = document.querySelector("g2")
@@ -35,11 +36,11 @@ const trap = document.getElementById("g3")
 console.log(trap);
 
 
-// get Display buttons
+// get Display 
 const displayBoard = document.querySelector(".display__board")
 console.log(displayBoard); 
 
-// HP and Coutdown
+// HP and Countdown
 const characterHP = document.querySelector(".game__hitPoints")
 console.log(characterHP);
 
@@ -49,9 +50,6 @@ console.log(countdownTimer);
 // Collate collections into arrays
 const pathways = Array.from(pathwaySquares)
 console.log(pathways);
-
-// const movements = Array.from(characterMovement)
-// console.log(movements);
 
 const bombs = Array.from(bombSquares)
 console.log(bombs);
@@ -65,8 +63,8 @@ console.log(gateways);
 
 
 let timeUp = false;
-let timeLimit = 50000;
-let HP = 500;
+let timeLimit = 25000;
+let HP = 350;
 let countdown ;
 
 // event testing
@@ -82,11 +80,10 @@ let countdown ;
 const handleStartGame = () => {
     console.log("game has started");
     countdown = timeLimit/1000;
-    characterHP.textContent = 500    
-    // characterHP.style.display = "block";
+    characterHP.textContent = HP;    
     countdownTimer.textContent = countdown
     timeUp = false;
-    HP = 500;
+    HP = 350;
     setTimeout = (() => {
         timeUp = true;
     }, timeLimit);
@@ -94,118 +91,148 @@ const handleStartGame = () => {
     let startCountdown = setInterval(() => {
         countdown -= 1
         countdownTimer.textContent = countdown;
+        
         if (countdown <0) {
             countdown = 0;
+            endWindow.classList.add("show")
+            endWindow.style.backgroundColor = "red"
+            endWindow.innerHTML = `
+            <h1>OH Noooo!</h1>
+            <h2>You've ran out of time</h2>
+            <h2>Maybe next time go a bit faster but remember be cautious</h2>
+            <div class="win-health"> you had ${HP} HP remaining</div>
+            <button id="remove">Back to Game</button>
+            `        
+        const reFresh = document.getElementById("remove")
+        reFresh.addEventListener("click", () => {
+        window.location.reload();
+    })
             clearInterval(startCountdown);
             displayBoard.textContent = "Time is UPP!!"
         }
     }, 1000);
 
-    // new player appears at gateway
     
 };
 
-
-
-
-// handle Character movement
-const handlePlayerMovement = (e) => {
-console.log(e);
-    switch (e.target.value) {
-        case "up":
-            console.log("player moved up");
-            break;
-        case "left":
-            console.log("player moved left");
-            break;
-        case "right":
-            console.log("player moved right");
-            break;
-        case "down":
-            console.log("player moved down");
-            break;            
-        default:
-            console.log("no movement");
-            break;
-        }
-};
-
-
-
-
-// handle bomb Square
-// const handleBomb = () => {
-//     // if (player.target === bombs) {
-//     //     alert("You have blown up");
-//     // }
-
-// bombs.forEach((bomb) => {
-//     bomb.addEventListener("mouseover", () => console.log("BOOOOOM"));
-// });
-
-// };
 
 
 // handle hp loss
 const handleHealth = () => {
     thorns.forEach((thorn) => {
         thorn.addEventListener("mouseover", () => {
-            HP -= 10;
+            HP -= 30;
             characterHP.textContent = HP;
-            displayBoard.textContent = "Ouch! Watch out for them Thorns!"
-            console.log("ouch -20hp")
+            if (HP <= 0) {
+                endWindow.classList.add("show")
+                endWindow.style.backgroundColor = "red"
+                endWindow.innerHTML = `
+                <h1>OH Noooo!</h1>
+                <h2>You've ran out of health</h2>
+                <h2>Maybe next time go a bit slower and be more cautious</h2>
+                <div class="win-health"> you had ${HP} HP remaining</div>
+                <button id="remove">Back to Game</button>
+                `        
+            const reFresh = document.getElementById("remove")
+            reFresh.addEventListener("click", () => {
+            window.location.reload();
+        })
+            }
+            displayBoard.innerHTML = `
+            <h1>Ouch! Watch out for them Thorns!</h1> 
+            <h2>Thats minus 30 HP...</h2> 
+            <h2>Only ${HP} HP remaining</h2>`
         });
     })                
     bombs.forEach((bomb) => {
         bomb.addEventListener("mouseover", () => { 
-        HP -= 50;
-        characterHP.textContent = HP;        
-        console.log("BOOOOOM -50hp")
-        displayBoard.textContent = "BOOOM Watch your step"
-        // this.bomb.pointerEvent = "none"
-        // setTimeout = (() => { 
-        //     this.bomb.pointerEvents = "auto"
-        // }, 10000);    
+        HP -= 70;
+        characterHP.textContent = HP; 
+        if (HP <= 0) {
+            endWindow.classList.add("show")
+            endWindow.style.backgroundImage = "url(./image/y8lb_c1ux_201215.jpg"
+            endWindow.style.backgroundSize = "100%"
+            endWindow.style.backgroundPosition = "center"
+            endWindow.style.color = "blue"
+            endWindow.innerHTML = `
+            <h1>BOOOOOM!</h1>
+            <h2>You've gone and got yourself blown up</h2>
+            <h2>Maybe next time be a bit more cautious</h2>
+            <div class="win-health"> you had ${HP} HP remaining</div>
+            <button id="remove">Back to Game</button>
+            `        
+        const reFresh = document.getElementById("remove")
+        reFresh.addEventListener("click", () => {
+        window.location.reload();
+    })
+        }       
+        displayBoard.innerHTML = `
+            <h1>BOOM! Watch your step!</h1> 
+            <h2>Thats minus 70 HP...</h2> 
+            <h2>Only ${HP} HP remaining</h2>`
+   
     });
     });
-    if (HP <0) {
-        HP = 0;
-        displayBoard.textContent = "You ran out of health...unlucky. Maybe next time be more cautious"
-    } 
-
+    
 };
 
 
 
-// Handle gateway and warping
+// Handle trap
 const handleTrap = (e) => {
-    // if (payer.target = trap) {
-    //     console.log("Genjutsu trap")
-    // }
     trap.addEventListener("mouseover", (e) => {
             console.log("Caught in a Genjutsu trap");
-            
-        })  
+            endWindow.classList.add("show")
+            endWindow.style.backgroundColor = "midnightblue"
+        endWindow.innerHTML = `
+        <h1>Unlucky</h1>
+        <h2>It seems like you got fooled and ended up caught in the trap</h2>
+        <h2>Keep on the look out for false doors next time</h2>
+        <div class="win-health"> you had ${HP} HP remaining</div>
+        <button id="remove">Back to Game</button>
+        `        
+        const reFresh = document.getElementById("remove")
+        reFresh.addEventListener("click", () => {
+        window.location.reload();
+    })
+    })  
     };
 
 
 // Handle winning
 const handleWin = () => {
-    // if (payer.target = finish) {
-    //     console.log("Congratulation you WON!")
-    // }
+
     finish.addEventListener("mouseover", () => {
-        
-        winWindow.classList.add("show")
-        winWindow.innerHTML += `
-       <div class="win-health"> you had ${HP} remaining</div>
-       <div> you had ${timeLimit} seconds remaining</div>
-       `        
+        endWindow.classList.add("show")
+        endWindow.innerHTML += `
+        <div class="win-health"> you had ${HP} HP remaining</div>
+        <button id="remove">Back to Game</button>
+        `        
+        const reFresh = document.getElementById("remove")
+        reFresh.addEventListener("click", () => {
+        window.location.reload();
+    })
         displayBoard.textContent = "Winner Winner Winner!"
 });
-
 }
 
+const handleLoss = () => {
+    if (HP <= 0) {
+        endWindow.classList.add("show")
+        endWindow.style.backgroundColor = "red"
+        endWindow.innerHTML = `
+        <h1>OH Noooo!</h1>
+        <h2>You've ran out of health</h2>
+        <h2>KMaybe next time go a bit slower and be more cautious</h2>
+        <div class="win-health"> you had ${HP} HP remaining</div>
+        <button id="remove">Back to Game</button>
+        `        
+    const reFresh = document.getElementById("remove")
+    reFresh.addEventListener("click", () => {
+    window.location.reload();
+})
+}
+};
 
 
 
@@ -217,27 +244,7 @@ ReStart.addEventListener("click", () => {
 })
 
 
-
-
-// character movement
-// characterMovement.forEach((movement) => {
-//     movement.addEventListener("click", (e) => {
-//         handlePlayerMovement (e);
-//         // handleBomb ();
-//         handleHealth ();
-//         handleWin ();
-//         handleTrap ();
-//     })
-    
-// });
-
-
-// thorn interaction
-
-
-
-// Function test
-// handleBomb ()
 handleHealth ();
 handleTrap ();
 handleWin ();
+handleLoss ();
