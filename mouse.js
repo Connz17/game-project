@@ -1,84 +1,58 @@
-// get player
-
-
 // get all game squares
 const pathwaySquares = document.querySelectorAll(".game__path")
-console.log(pathwaySquares);
 
 const thornSquares = document.querySelectorAll(".game__thorns")
-console.log(thornSquares);
 
 const bombSquares = document.querySelectorAll(".game__bomb")
-console.log(bombSquares);
 
 const gatewaySquares = document.querySelectorAll(".game__gate");
-console.log(gatewaySquares);
-
 
 const endWindow = document.querySelector(".game-end");
 
 // get start  and restart button
 const startButton = document.getElementById("game-start")
-console.log(startButton);
 
 const ReStart = document.getElementById("game-redo")
 
 
-
 // get gateway, finish and trap buttons
 const gateway = document.querySelector("g2")
-console.log(gateway);
 
 const finish = document.getElementById("g1")
-console.log(finish);
 
 const trap = document.getElementById("g3")
-console.log(trap);
 
 
 // get Display 
 const displayBoard = document.querySelector(".display__board")
-console.log(displayBoard); 
 
 // HP and Countdown
 const characterHP = document.querySelector(".game__hitPoints")
-console.log(characterHP);
 
 const countdownTimer = document.querySelector(".game__countdown")
-console.log(countdownTimer);
 
 // Collate collections into arrays
 const pathways = Array.from(pathwaySquares)
-console.log(pathways);
 
 const bombs = Array.from(bombSquares)
-console.log(bombs);
 
 const thorns = Array.from(thornSquares);
-console.log(thorns);
 
 const gateways = Array.from(gatewaySquares);
-console.log(gateways);
 
-
-
+// game variables
 let timeUp = false;
 let timeLimit = 25000;
 let HP = 350;
-let countdown ;
+let countdown;
 
 // event testing
 
 
-
-
-
-
 // game functions
-
 // Handle Start function
 const handleStartGame = () => {
-    console.log("game has started");
+    displayBoard.textContent = "The game has BEGUN!!"
     countdown = timeLimit/1000;
     characterHP.textContent = HP;    
     countdownTimer.textContent = countdown
@@ -109,7 +83,7 @@ const handleStartGame = () => {
     })
             clearInterval(startCountdown);
             displayBoard.textContent = "Time is UPP!!"
-        }
+        } else return
     }, 1000);
 
     
@@ -130,7 +104,6 @@ const handleHealth = () => {
                 <h1>OH Noooo!</h1>
                 <h2>You've ran out of health</h2>
                 <h2>Maybe next time go a bit slower and be more cautious</h2>
-                <div class="win-health"> you had ${HP} HP remaining</div>
                 <button id="remove">Back to Game</button>
                 `        
             const reFresh = document.getElementById("remove")
@@ -150,15 +123,14 @@ const handleHealth = () => {
         characterHP.textContent = HP; 
         if (HP <= 0) {
             endWindow.classList.add("show")
-            endWindow.style.backgroundImage = "url(./image/y8lb_c1ux_201215.jpg"
+            endWindow.style.backgroundImage = "url(./image/sw7i_axtl_201215.jpg"
             endWindow.style.backgroundSize = "100%"
             endWindow.style.backgroundPosition = "center"
-            endWindow.style.color = "blue"
+            endWindow.style.color = "black"
             endWindow.innerHTML = `
             <h1>BOOOOOM!</h1>
             <h2>You've gone and got yourself blown up</h2>
             <h2>Maybe next time be a bit more cautious</h2>
-            <div class="win-health"> you had ${HP} HP remaining</div>
             <button id="remove">Back to Game</button>
             `        
         const reFresh = document.getElementById("remove")
@@ -177,11 +149,9 @@ const handleHealth = () => {
 };
 
 
-
 // Handle trap
 const handleTrap = (e) => {
     trap.addEventListener("mouseover", (e) => {
-            console.log("Caught in a Genjutsu trap");
             endWindow.classList.add("show")
             endWindow.style.backgroundColor = "midnightblue"
         endWindow.innerHTML = `
@@ -201,7 +171,6 @@ const handleTrap = (e) => {
 
 // Handle winning
 const handleWin = () => {
-
     finish.addEventListener("mouseover", () => {
         endWindow.classList.add("show")
         endWindow.innerHTML += `
@@ -233,7 +202,6 @@ const handleLoss = () => {
 })
 }
 };
-
 
 
 // initiate Start
