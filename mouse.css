@@ -6,6 +6,10 @@
   font-family: "Kanit";
 }
 
+body {
+  background: linear-gradient(to right, #1d82d4, gold);
+}
+
 nav {
   display: flex;
   justify-content: space-between;
