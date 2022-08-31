@@ -142,7 +142,6 @@ const handleHealth = () => {
             <h1>BOOM! Watch your step!</h1> 
             <h2>Thats minus 70 HP...</h2> 
             <h2>Only ${HP} HP remaining</h2>`
-   
     });
     });
     
