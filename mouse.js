@@ -112,7 +112,7 @@ const handleHealth = () => {
         })
             }
             displayBoard.innerHTML = `
-            <h1>Ouch! Watch out for them Thorns!</h1> 
+            <h1>Ouch! Watch out for those Thorns!</h1> 
             <h2>Thats minus 30 HP...</h2> 
             <h2>Only ${HP} HP remaining</h2>`
         });

@@ -77,7 +77,7 @@ var handleHealth = function handleHealth() {
         });
       }
 
-      displayBoard.innerHTML = "\n            <h1>Ouch! Watch out for them Thorns!</h1> \n            <h2>Thats minus 30 HP...</h2> \n            <h2>Only ".concat(HP, " HP remaining</h2>");
+      displayBoard.innerHTML = "\n            <h1>Ouch! Watch out for those Thorns!</h1> \n            <h2>Thats minus 30 HP...</h2> \n            <h2>Only ".concat(HP, " HP remaining</h2>");
     });
   });
   bombs.forEach(function (bomb) {

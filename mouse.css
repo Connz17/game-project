@@ -428,6 +428,9 @@ nav .top-bar__button {
   grid-area: g2;
   background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
   background-size: 100%;
+  font-size: large;
+  font-weight: 800;
+  color: black;
 }
 
 #g3 {
@@ -450,7 +453,8 @@ nav .top-bar__button {
   border-radius: 0.5rem;
   cursor: pointer;
   font-weight: 700;
-  border: solid 2px red;
+  box-shadow: 7px 5px 5px;
+  border: solid 3px black;
   background-color: rgba(93, 46, 202, 0.8);
 }
 
