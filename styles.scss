@@ -20,16 +20,40 @@ nav {
     }
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-
 
 .title {
     text-align: center;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-evenly;
+    height: 15vh;
+}
+
+.display {
+    margin: auto;
+    height: 20vh;
+    width: 50vw;
+    text-align: center;
+
+
+    &__board {
+        margin: 0.15rem;
+        padding: .3rem;
+        max-width: 100%;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 7px 5px 5px;
+        border: solid 3px black;
+
+        background-color: rgba(93, 46, 202, 0.8);
+
+        &--info {
+            font-size: 0.5rem;
+        }
+    }
 }
 
 #game-start {
@@ -41,38 +65,32 @@ main {
     background-color: rgba(93, 46, 202, 0.8);
     cursor: pointer;
     font-weight: 700;
+    height: auto;
 }
 
-.countdown {
-    grid-area: t5 ;
-    order: 1;
-    font-size: 3rem;
-    text-align: center;
-    color: rgb(241, 13, 13);
-}
-
-
-.hitPoints {
-    grid-area: t7;
-    order: 1;
-    font-size: 2rem;
-    text-align: center;
-    color: red;
+#game-redo {
+    margin: .5rem;
+    padding: .4rem;
+    margin-left: 3rem;
+    font-size: .7rem;
+    border-radius: 50px;
+    background-color: rgba(93, 46, 202, 0.8);
+    cursor: pointer;
+    font-weight: 700;
 }
 
 
 .game {
-    height: 70vh;
+    height: 65vh;
     width: 90vw;
     margin: auto;
     cursor:pointer;
-
+    text-align: center;
     display: grid;
-    grid-template-columns: 50px 100px 100px 100px 100px 100px 100px 100px 100px 50px;
-    grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 50px;
-    // gap: 5px;
+    grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
     grid-template-areas: 
-        "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10"
+        "t1 t2 t3 t4 t5 t6 t7 t8 t9 t10"
         "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2"
         "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1"
         "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19"
@@ -82,16 +100,14 @@ main {
         "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41"
     ;
 
-    // justify-content: center;
-    // align-items: center;
-    // text-align: center;
+
 
     background-color: rgb(112, 117, 126);
 
     &__countdown {
         grid-area: t5 ;
         order: 1;
-        font-size: 3rem;
+        font-size: 1.5rem;
         text-align: center;
         color: rgb(241, 13, 13);
     }
@@ -99,26 +115,23 @@ main {
     &__hitPoints {
         grid-area: t7;
         order: 1;
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
         color: red;
     }
 
     &__player {
-        grid-area: p16;
+        grid-area: g2;
         order: 2;
         margin: auto;
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 60px;
         background-image: url(./image/pngkey.com-game-character-png-1066616.png);
         background-size: 100%;
         background-position: center;
-        border-radius: 10rem;
         overflow: hidden;
-        transition: transform 1s linear;
+        transition: transform 0.5s linear;
 
-
-        // border: solid 2px red;
     }
     
     
@@ -136,7 +149,6 @@ main {
     background-image: url(./image/bushes-png-2836.png);
     background-position: center;
     background-size: 95%;
-    // background: url(./image/clipart1332775.png);
 }
 
 
@@ -148,7 +160,6 @@ main {
     
     &__gate {
     background-color:dodgerblue;
-    // background-image: url(./image/sw7i_axtl_201215.jpg);
     background-size: 100%;
     background-position: center;
 }
@@ -294,9 +305,9 @@ main {
     grid-area: t5;
 }
 
-// #t6 {
-//     grid-area: t6;
-// }
+#t6 {
+    grid-area: t6;
+}
 
 #t7 {
     grid-area: t7;
@@ -503,7 +514,7 @@ main {
 
 
 .movement {
-    height: 20vh;
+    height: 10vh;
     text-align: center;
 
 
@@ -519,7 +530,43 @@ main {
         background-color: rgba(93, 46, 202, 0.8);
     }
 }
-    
-    
-    
+
+.game-end {
+    display: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkgreen;
+    opacity: .9;
+    font-size: large;
+    color: white;
+
 }
+
+.win-health {
+    color:red;
+
+}
+
+#remove {
+    margin: .5rem;
+    padding: .4rem;
+    margin-left: 3rem;
+    font-size: .7rem;
+    border-radius: 50px;
+    background-color: rgba(93, 46, 202, 0.8);
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 1;
+}
+
+.game-end.show {
+    display: flex;
+}
+    
+    

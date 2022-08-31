@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./styles.css">
     <style>
     </style>
-    <title>Document</title>
+    <title>Click maze</title>
 </head>
 <style> </style>
 <body></body>
@@ -22,102 +22,115 @@
         <section class="title">
             <h1>My Game!</h1> 
             <p>welcome to my maze! see if you can get to the end and avoid the hidden bombs</p>
+            <p>p.s. avoid the game grid try to not get too close to the thorns, their spikes hurt</p>
         </section>            
     </header>
 
     <main>
-        <button id="game-start">START</button>
-        <div class="game">
-            <div class="game__countdown"></div>
-            <div class="game__hitPoints">500</div>
+        <div class="game-info">
+            <button id="game-start">START</button>
+                <div class="display">
+                        <div class="display__board">
+                            <div>
+                                <div class="game__countdown"></div>
+                                <div class="game__hitPoints">500</div>
+                            </div>
+                            <div class="display__board--info">
+                                Game updates go in here
+                            </div>
+                    </div>                               
+                </div>
+            <button id="game-redo">RE-START</button>
+        </div>
+        <div class="game">            
             <!-- Path squares -->
             <div class="game__player"></div>
-            <div class="game__path" id="p1">Pathway</div>
-            <div class="game__path" id="p2">Pathway</div>
-            <div class="game__path" id="p3">Pathway</div>
-            <div class="game__path" id="p4">Pathway</div>
-            <div class="game__path" id="p5">Pathway</div>
-            <div class="game__path" id="p6">Pathway</div>
-            <div class="game__path" id="p7">Pathway</div>
-            <div class="game__path" id="p8">Pathway</div>
-            <div class="game__path" id="p9">Pathway</div>
-            <div class="game__path" id="p10">Pathway</div>
-            <div class="game__path" id="p11">Pathway</div>
-            <div class="game__path" id="p12">Pathway</div>
-            <div class="game__path" id="p13">Pathway</div>
-            <div class="game__path" id="p14">Pathway</div>
-            <div class="game__path" id="p15">Pathway</div>
-            <div class="game__path" id="p16">Pathway</div>
-            <div class="game__path" id="p17">Pathway</div>
-            <div class="game__path" id="p18">Pathway</div>
-            <div class="game__path" id="p19">Pathway</div>
-            <div class="game__path" id="p20">Pathway</div>
-            <div class="game__path" id="p21">Pathway</div>
-            <div class="game__path" id="p22">Pathway</div>
-            <div class="game__path" id="p23">Pathway</div>
-            <div class="game__path" id="p24">Pathway</div>
-            <div class="game__path" id="p25">Pathway</div>
-            <div class="game__path" id="p26">Pathway</div>
-            <div class="game__path" id="p27">Pathway</div>
-            <div class="game__path" id="p28">Pathway</div>
-            <div class="game__path" id="p29">Pathway</div>
+            <div class="game__path" id="p1"></div>
+            <div class="game__path" id="p2"></div>
+            <div class="game__path" id="p3"></div>
+            <div class="game__path" id="p4"></div>
+            <div class="game__path" id="p5"></div>
+            <div class="game__path" id="p6"></div>
+            <div class="game__path" id="p7"></div>
+            <div class="game__path" id="p8"></div>
+            <div class="game__path" id="p9"></div>
+            <div class="game__path" id="p10"></div>
+            <div class="game__path" id="p11"></div>
+            <div class="game__path" id="p12"></div>
+            <div class="game__path" id="p13"></div>
+            <div class="game__path" id="p14"></div>
+            <div class="game__path" id="p15"></div>
+            <div class="game__path" id="p16"></div>
+            <div class="game__path" id="p17"></div>
+            <div class="game__path" id="p18"></div>
+            <div class="game__path" id="p19"></div>
+            <div class="game__path" id="p20"></div>
+            <div class="game__path" id="p21"></div>
+            <div class="game__path" id="p22"></div>
+            <div class="game__path" id="p23"></div>
+            <div class="game__path" id="p24"></div>
+            <div class="game__path" id="p25"></div>
+            <div class="game__path" id="p26"></div>
+            <div class="game__path" id="p27"></div>
+            <div class="game__path" id="p28"></div>
+            <div class="game__path" id="p29"></div>
 
             <!-- thorn squares -->
-            <div class="game__thorns" id="t1">Thorns</div>
-            <div class="game__thorns" id="t2">Thorns</div>
-            <div class="game__thorns" id="t3">Thorns</div>
-            <div class="game__thorns" id="t4">Thorns</div>
-            <div class="game__thorns" id="t5">Thorns</div>
-            <!-- <div class="game__thorns" id="t6">Thorns</div> -->
-            <div class="game__thorns" id="t7">Thorns</div>
-            <div class="game__thorns" id="t8">Thorns</div>
-            <div class="game__thorns" id="t9">Thorns</div>
-            <div class="game__thorns" id="t10">Thorns</div>
-            <div class="game__thorns" id="t11">Thorns</div>
-            <div class="game__thorns" id="t12">Thorns</div>
-            <div class="game__thorns" id="t13">Thorns</div>
-            <div class="game__thorns" id="t14">Thorns</div>
-            <div class="game__thorns" id="t15">Thorns</div>
-            <div class="game__thorns" id="t16">Thorns</div>
-            <div class="game__thorns" id="t17">Thorns</div>
-            <div class="game__thorns" id="t18">Thorns</div>
-            <div class="game__thorns" id="t19">Thorns</div>
-            <div class="game__thorns" id="t20">Thorns</div>
-            <div class="game__thorns" id="t21">Thorns</div>
-            <div class="game__thorns" id="t22">Thorns</div>
-            <div class="game__thorns" id="t23">Thorns</div>
-            <div class="game__thorns" id="t24">Thorns</div>
-            <div class="game__thorns" id="t25">Thorns</div>
-            <div class="game__thorns" id="t26">Thorns</div>
-            <div class="game__thorns" id="t27">Thorns</div>
-            <div class="game__thorns" id="t28">Thorns</div>
-            <div class="game__thorns" id="t29">Thorns</div>
-            <div class="game__thorns" id="t30">Thorns</div>
-            <div class="game__thorns" id="t31">Thorns</div>
-            <div class="game__thorns" id="t32">Thorns</div>
-            <div class="game__thorns" id="t33">Thorns</div>
-            <div class="game__thorns" id="t34">Thorns</div>
-            <div class="game__thorns" id="t35">Thorns</div>
-            <div class="game__thorns" id="t36">Thorns</div>
-            <div class="game__thorns" id="t37">Thorns</div>
-            <div class="game__thorns" id="t38">Thorns</div>
-            <div class="game__thorns" id="t39">Thorns</div>
-            <div class="game__thorns" id="t40">Thorns</div>
-            <div class="game__thorns" id="t41">Thorns</div>
+            <div class="game__thorns" id="t1"></div>
+            <div class="game__thorns" id="t2"></div>
+            <div class="game__thorns" id="t3"></div>
+            <div class="game__thorns" id="t4"></div>
+            <div class="game__thorns" id="t5"></div>
+            <div class="game__thorns" id="t6"></div>
+            <div class="game__thorns" id="t7"></div>
+            <div class="game__thorns" id="t8"></div>
+            <div class="game__thorns" id="t9"></div>
+            <div class="game__thorns" id="t10"></div>
+            <div class="game__thorns" id="t11"></div>
+            <div class="game__thorns" id="t12"></div>
+            <div class="game__thorns" id="t13"></div>
+            <div class="game__thorns" id="t14"></div>
+            <div class="game__thorns" id="t15"></div>
+            <div class="game__thorns" id="t16"></div>
+            <div class="game__thorns" id="t17"></div>
+            <div class="game__thorns" id="t18"></div>
+            <div class="game__thorns" id="t19"></div>
+            <div class="game__thorns" id="t20"></div>
+            <div class="game__thorns" id="t21"></div>
+            <div class="game__thorns" id="t22"></div>
+            <div class="game__thorns" id="t23"></div>
+            <div class="game__thorns" id="t24"></div>
+            <div class="game__thorns" id="t25"></div>
+            <div class="game__thorns" id="t26"></div>
+            <div class="game__thorns" id="t27"></div>
+            <div class="game__thorns" id="t28"></div>
+            <div class="game__thorns" id="t29"></div>
+            <div class="game__thorns" id="t30"></div>
+            <div class="game__thorns" id="t31"></div>
+            <div class="game__thorns" id="t32"></div>
+            <div class="game__thorns" id="t33"></div>
+            <div class="game__thorns" id="t34"></div>
+            <div class="game__thorns" id="t35"></div>
+            <div class="game__thorns" id="t36"></div>
+            <div class="game__thorns" id="t37"></div>
+            <div class="game__thorns" id="t38"></div>
+            <div class="game__thorns" id="t39"></div>
+            <div class="game__thorns" id="t40"></div>
+            <div class="game__thorns" id="t41"></div>
 
             <!-- bomb squares -->
-            <div class="game__bomb" id="b1">BOMB</div>
-            <div class="game__bomb" id="b2">BOMB</div>
-            <div class="game__bomb" id="b3">BOMB</div>
-            <div class="game__bomb" id="b4">BOMB</div>
-            <div class="game__bomb" id="b5">BOMB</div>
-            <div class="game__bomb" id="b6">BOMB</div>
-            <div class="game__bomb" id="b7">BOMB</div>
+            <div class="game__bomb" id="b1"></div>
+            <div class="game__bomb" id="b2"></div>
+            <div class="game__bomb" id="b3"></div>
+            <div class="game__bomb" id="b4"></div>
+            <div class="game__bomb" id="b5"></div>
+            <div class="game__bomb" id="b6"></div>
+            <div class="game__bomb" id="b7"></div>
 
             <!-- gateway squares -->
-            <div value="winner" class="game__gate" id="g1">Exit</div>
-            <div value="start" class="game__gate" id="g2">Start</div>
-            <div value="trap" class="game__gate" id="g3">Trap</div>
+            <div value="winner" class="game__gate" id="g1"></div>
+            <div value="start" class="game__gate" id="g2"></div>
+            <div value="trap" class="game__gate" id="g3"></div>
         </div>
 
         <div class="movement">
@@ -135,7 +148,11 @@
             
         </div>
     </main>
-    
+    <div class="game-end ">
+        <h1> Congratulations!</h1>
+        <h2> You have escaped the maze well done. lets see how you did:</h2>
+        <div></div>
+    </div>    
     <footer>
         
     </footer>

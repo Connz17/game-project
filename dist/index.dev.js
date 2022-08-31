@@ -1,27 +1,23 @@
 "use strict";
 
 // get player
-var player = document.querySelector(".game__player");
-console.log(player); // get all game squares
+var player = document.querySelector(".game__player"); // get all game squares
 
 var pathwaySquares = document.querySelectorAll(".game__path");
-console.log(pathwaySquares);
 var thornSquares = document.querySelectorAll(".game__thorns");
-console.log(thornSquares);
 var bombSquares = document.querySelectorAll(".game__bomb");
-console.log(bombSquares);
-var gatewaySquares = document.querySelectorAll(".game__gate");
-console.log(gatewaySquares); // get start button
+var gatewaySquares = document.querySelectorAll(".game__gate"); // get end window
+
+var endWindow = document.querySelector(".game-end"); // get Display 
+
+var displayBoard = document.querySelector(".display__board--info"); // get start button
 
 var startButton = document.getElementById("game-start");
-console.log(startButton); // get gateway, finish and trap buttons
+var ReStart = document.getElementById("game-redo"); // get gateway, finish and trap buttons
 
 var gateway = document.querySelector("g2");
-console.log(gateway);
 var finish = document.getElementById("g1");
-console.log(finish);
-var trap = document.getElementById("g3");
-console.log(trap); // get movement buttons
+var trap = document.getElementById("g3"); // get movement buttons
 
 var characterMovement = document.querySelectorAll(".movement__buttons");
 console.log(characterMovement); // HP and Coutdown
@@ -46,74 +42,18 @@ var Y = 0;
 var timeUp = false;
 var timeLimit = 50000;
 var HP = 500;
-var countdown;
+var countdown; // event testing
 
-var right = function right() {
-  player.style.transform = "translate(".concat(X += 65, "px, ").concat(Y, "px)");
-};
-
-var moveRight = [{
-  transform: "translate(".concat(X += 65, "px, ").concat(Y, "px)")
-}];
-var moveUp = [{
-  transform: "translate(".concat(X, "px, ").concat(Y -= 65, "px)")
-}];
-var moveDown = [{
-  transform: "translate(".concat(X, "px, ").concat(Y += 65, "px)")
-}];
-var moveLeft = [{
-  transform: "translate(".concat(X -= 65, "px, ").concat(Y, "px)")
-}];
-var frames = {
-  duration: 3000,
-  fill: 'forwards'
-}; // event testing
-
-var loop;
-var fps = 60;
-var grid, token;
-
-prepareGrid = function prepareGrid() {
-  grid = document.getElementsByClassName(".game")[0];
-  token = grid.getContext('2d');
-}; // let currentPosX = player.offsetLeft
-// console.log(currentPosX);
-// let currentPosY = player.offsetTop
-// console.log(currentPosY);
-// let value = player.style.left
-// console.log(value);
-
-
-var position = function position() {
-  var currentX = player.offsetLeft;
-  console.log(currentX);
-  player = currentX;
-  return player;
-}; // this.player = {x: 596, y: 180, color: "red"};
-// return this.player
-// let NewTile = this.gamePlayer.X + this.gamePlayer.Y; 
-// console.log(NewTile);
-// game functions
-
-
-update = function update() {
-  console.log("updating");
-};
-
-render = function render() {
-  console.log("rendering");
-}; // Handle Start function
+var currPos = function currPos() {
+  return player.getBoundingClientRect();
+}; // game functions
+// Handle Start function
 
 
 var handleStartGame = function handleStartGame() {
-  console.log("game has started");
-  loop = setInterval(function () {
-    update();
-    render();
-  }, 1000 / fps);
+  displayBoard.textContent = "The game has BEGUN!!";
   countdown = timeLimit / 1000;
-  characterHP.textContent = 500; // characterHP.style.display = "block";
-
+  characterHP.textContent = 500;
   countdownTimer.textContent = countdown;
   timeUp = false;
   HP = 500;
@@ -126,113 +66,133 @@ var handleStartGame = function handleStartGame() {
 
     if (countdown < 0) {
       countdown = 0;
+      endWindow.classList.add("show");
+      endWindow.style.backgroundColor = "red";
+      endWindow.innerHTML = "\n            <h1>OH Noooo!</h1>\n            <h2>You've ran out of time</h2>\n            <h2>Maybe next time go a bit faster but remember be cautious</h2>\n            <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n            <button id=\"remove\">Back to Game</button>\n            ");
+      var reFresh = document.getElementById("remove");
+      reFresh.addEventListener("click", function () {
+        window.location.reload();
+      });
       clearInterval(startCountdown);
-      countdownTimer.textContent = "Time is UPP!!";
-    }
-  }, 1000); // new player appears at gateway
+      displayBoard.textContent = "Time is UPP!!";
+    } else return;
+  }, 1000);
 }; // handle Character movement
 
 
 var handlePlayerMovement = function handlePlayerMovement(e) {
-  console.log(e);
-
   switch (e.target.value) {
     case "up":
-      player.style.transform = "translate(".concat(X, "px, ").concat(Y -= 100, "px)");
-      console.log(player);
-      console.log("player moved up");
+      player.style.transform = "translate(".concat(X, "px, ").concat(Y -= 43, "px)");
       break;
 
     case "left":
-      player.style.transform = "translate(".concat(X -= 100, "px, ").concat(Y, "px)");
-      console.log("player moved left");
+      player.style.transform = "translate(".concat(X -= 43, "px, ").concat(Y, "px)");
       break;
 
     case "right":
-      player.style.transform = "translate(".concat(X += 100, "px, ").concat(Y, "px)");
-      console.log("player moved right");
+      player.style.transform = "translate(".concat(X += 43, "px, ").concat(Y, "px)");
       break;
 
     case "down":
-      player.style.transform = "translate(".concat(X, "px, ").concat(Y += 100, "px)");
-      console.log("player moved down");
+      player.style.transform = "translate(".concat(X, "px, ").concat(Y += 43, "px)");
       break;
 
     default:
-      console.log("no movement");
       break;
   }
-}; // handle bomb Square
-// const handleBomb = () => {
-//     // if (player.target === bombs) {
-//     //     alert("You have blown up");
-//     // }
-// bombs.forEach((bomb) => {
-//     bomb.addEventListener("mouseover", () => console.log("BOOOOOM"));
-// });
-// };
-// handle hp loss
+}; // handle hp loss
 
 
 var handleHealth = function handleHealth() {
   thorns.forEach(function (thorn) {
-    thorn.addEventListener("mouseover", function () {
-      HP -= 10;
+    if (currPos().x > thorn.getBoundingClientRect().x + thorn.getBoundingClientRect().width || currPos().x + currPos().width < thorn.getBoundingClientRect().x || currPos().y > thorn.getBoundingClientRect().y + thorn.getBoundingClientRect().height || currPos().y + currPos().height < thorn.getBoundingClientRect().y) {//no collision
+    } else {
+      HP -= 25;
       characterHP.textContent = HP;
-      console.log("ouch -20hp");
-    });
+    }
+
+    if (HP <= 0) {
+      endWindow.classList.add("show");
+      endWindow.style.backgroundColor = "red";
+      endWindow.innerHTML = "\n            <h1>OH Noooo!</h1>\n            <h2>You've ran out of health</h2>\n            <h2>Maybe next time go a bit slower and be more cautious</h2>\n            <button id=\"remove\">Back to Game</button>\n            ";
+      var reFresh = document.getElementById("remove");
+      reFresh.addEventListener("click", function () {
+        window.location.reload();
+      });
+    }
+
+    displayBoard.innerHTML = "\n        <h1>Ouch! Watch out for those Thorns! Thats minus 25 HP...</h1>  \n        <h2>Only ".concat(HP, " HP remaining</h2>");
   });
   bombs.forEach(function (bomb) {
-    bomb.addEventListener("mouseover", function () {
-      HP -= 50;
+    if (bomb.getBoundingClientRect().x > currPos().x + currPos().width || bomb.getBoundingClientRect().x + bomb.getBoundingClientRect().width < currPos().x || bomb.getBoundingClientRect().y > currPos().y + currPos().height || bomb.getBoundingClientRect().y + bomb.getBoundingClientRect().height < currPos().y) {
+      // no collision
+      return;
+    } else {
+      HP -= 60;
       characterHP.textContent = HP;
-      console.log("BOOOOOM -50hp"); // this.style.background = `url(./image/y8lb_c1ux_201215.jpg)`;
-      // this.style.backgroundImage = `url(./image/y8lb_c1ux_201215.jpg)`
-      // this.bomb.pointerEvent = "none"
-      // setTimeout = (() => { 
-      // this.style.backgroundImage = "url(./image/Brick_04.png)"
-      // this.bomb.mouseEvents = "auto"
-      // }, 3000);    
-    });
+      bomb.style.backgroundPosition = "center";
+      bomb.style.backgroundSize = "100%";
+      bomb.style.backgroundImage = "url(./image/y8lb_c1ux_201215.jpg)";
+    }
+
+    if (HP <= 0) {
+      endWindow.classList.add("show");
+      endWindow.style.backgroundImage = "url(./image/sw7i_axtl_201215.jpg";
+      endWindow.style.backgroundSize = "100%";
+      endWindow.style.backgroundPosition = "center";
+      endWindow.style.color = "black";
+      endWindow.innerHTML = "\n            <h1>BOOOOOM!</h1>\n            <h2>You've gone and got yourself blown up</h2>\n            <h2>Maybe next time be a bit more cautious</h2>\n            <button id=\"remove\">Back to Game</button>\n            ";
+      var reFresh = document.getElementById("remove");
+      reFresh.addEventListener("click", function () {
+        window.location.reload();
+      });
+    }
+
+    displayBoard.innerHTML = "\n            <h1>BOOM! Watch your step! Thats minus 60 HP...</h1> \n            <h2>Only ".concat(HP, " HP remaining</h2>");
   });
-}; // Handle gateway and warping
+}; // Handle trap door
 
 
 var handleTrap = function handleTrap(e) {
-  // if (payer.target = trap) {
-  //     console.log("Genjutsu trap")
-  // }
-  trap.addEventListener("mouseover", function (e) {
-    console.log("Caught in a Genjutsu trap");
-  });
+  if (trap.getBoundingClientRect().x > currPos().x + currPos().width || trap.getBoundingClientRect().x + trap.getBoundingClientRect().width < currPos().x || trap.getBoundingClientRect().y > currPos().y + currPos().height || trap.getBoundingClientRect().y + trap.getBoundingClientRect().height < currPos().y) {//no collision
+  } else {
+    endWindow.classList.add("show");
+    endWindow.style.backgroundColor = "midnightblue";
+    endWindow.innerHTML = "\n    <h1>Unlucky</h1>\n    <h2>It seems like you got fooled and ended up caught in the trap</h2>\n    <h2>Keep on the look out for false doors next time</h2>\n    <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n    <button id=\"remove\">Back to Game</button>\n    ");
+    var reFresh = document.getElementById("remove");
+    reFresh.addEventListener("click", function () {
+      window.location.reload();
+    });
+  }
 }; // Handle winning
 
 
 var handleWin = function handleWin() {
-  // if (payer.target = finish) {
-  //     console.log("Congratulation you WON!")
-  // }
-  finish.addEventListener("mouseover", function () {
-    console.log("Congratulation you WON!");
-  });
+  if (finish.getBoundingClientRect().x > currPos().x + currPos().width || finish.getBoundingClientRect().x + finish.getBoundingClientRect().width < currPos().x || finish.getBoundingClientRect().y > currPos().y + currPos().height || finish.getBoundingClientRect().y + finish.getBoundingClientRect().height < currPos().y) {//no collision
+  } else {
+    endWindow.classList.add("show");
+    endWindow.innerHTML += "\n        <div class=\"win-health\"> you had ".concat(HP, " HP remaining</div>\n        <button id=\"remove\">Back to Game</button>\n        ");
+    var reFresh = document.getElementById("remove");
+    reFresh.addEventListener("click", function () {
+      window.location.reload();
+    });
+    displayBoard.textContent = "Winner Winner Winner!";
+  }
 }; // initiate Start
 
 
-startButton.addEventListener("click", handleStartGame); // character movement
+startButton.addEventListener("click", handleStartGame);
+ReStart.addEventListener("click", function () {
+  window.location.reload();
+}); // character movement
 
 characterMovement.forEach(function (movement) {
   movement.addEventListener("click", function (e) {
     e.preventDefault();
-    handlePlayerMovement(e); // handleBomb ();
-
     handleHealth();
+    handlePlayerMovement(e);
     handleWin();
     handleTrap();
   });
-}); // thorn interaction
-// Function test
-// handleBomb ()
-
-handleHealth();
-handleTrap();
-handleWin();
+});

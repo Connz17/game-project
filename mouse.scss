@@ -77,7 +77,6 @@ nav {
         display: grid;
         grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
         grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
-        // gap: 5px;
         grid-template-areas: 
             "t1 t2 t3 t4 t5 t6 t7 t8 t9 t10"
             "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2"
@@ -108,13 +107,13 @@ nav {
             color: red;
         }
 
-        &__player {
-            grid-area: g2;
-            order: 1;
-            margin: auto;
+        // &__player {
+        //     grid-area: g2;
+        //     order: 1;
+        //     margin: auto;
 
-            border: solid 2px red;
-        }
+        //     border: solid 2px red;
+        // }
         
         
 
@@ -289,9 +288,9 @@ nav {
         grid-area: t5;
     }
 
-    // #t6 {
-    //     grid-area: t6;
-    // }
+    #t6 {
+        grid-area: t6;
+    }
 
     #t7 {
         grid-area: t7;
@@ -508,7 +507,7 @@ nav {
             height: 70%;
             border-radius: 0.5rem;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 500;
             box-shadow: 7px 5px 5px;
             border: solid 3px black;
 
@@ -537,7 +536,6 @@ nav {
     opacity: .9;
     font-size: large;
     color: white;
-
 }
 
 .win-health {

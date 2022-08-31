@@ -16,16 +16,50 @@ nav .top-bar__button {
   margin: 0.5rem;
 }
 
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-main .title {
+.title {
   text-align: center;
 }
-main #game-start {
+
+.game-info {
+  display: flex;
+  justify-content: space-evenly;
+  height: 15vh;
+}
+
+.display {
+  margin: auto;
+  height: 20vh;
+  width: 50vw;
+  text-align: center;
+}
+.display__board {
+  margin: 0.15rem;
+  padding: 0.3rem;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 7px 5px 5px;
+  border: solid 3px black;
+  background-color: rgba(93, 46, 202, 0.8);
+}
+.display__board--info {
+  font-size: 0.5rem;
+}
+
+#game-start {
+  margin: 0.5rem;
+  padding: 0.4rem;
+  margin-left: 3rem;
+  font-size: 0.7rem;
+  border-radius: 50px;
+  background-color: rgba(93, 46, 202, 0.8);
+  cursor: pointer;
+  font-weight: 700;
+  height: auto;
+}
+
+#game-redo {
   margin: 0.5rem;
   padding: 0.4rem;
   margin-left: 3rem;
@@ -35,333 +69,404 @@ main #game-start {
   cursor: pointer;
   font-weight: 700;
 }
-main .countdown {
-  grid-area: t5;
-  order: 1;
-  font-size: 3rem;
-  text-align: center;
-  color: #f10d0d;
-}
-main .hitPoints {
-  grid-area: t7;
-  order: 1;
-  font-size: 2rem;
-  text-align: center;
-  color: red;
-}
-main .game {
-  height: 70vh;
+
+.game {
+  height: 65vh;
   width: 90vw;
   margin: auto;
   cursor: pointer;
+  text-align: center;
   display: grid;
-  grid-template-columns: 50px 100px 100px 100px 100px 100px 100px 100px 100px 50px;
-  grid-template-rows: 50px 100px 100px 100px 100px 100px 100px 50px;
-  grid-template-areas: "t1 t2 t3 t4 t5 t5 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 1fr;
+  grid-template-areas: "t1 t2 t3 t4 t5 t6 t7 t8 t9 t10" "t11 p1 b1 p2 p3 p4 p5 p6 p7 b2" "t12 p8 t13 p9 b3 t14 t15 t16 p10 g1" "t17 p11 b4 p12 p13 p14 t18 p15 b5 t19" "g2 p16 p17 t20 t21 p18 p19 p20 t22 t23" "t24 t25 p21 t26 t27 p22 p23 b6 t28 t29" "t30 t31 p24 p25 p26 p27 p28 p29 t32 t33" "t34 t35 t36 t37 t38 b7 t39 g3 t40 t41";
   background-color: #70757e;
 }
-main .game__countdown {
+.game__countdown {
   grid-area: t5;
   order: 1;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #f10d0d;
 }
-main .game__hitPoints {
+.game__hitPoints {
   grid-area: t7;
   order: 1;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   color: red;
 }
-main .game__player {
-  grid-area: p16;
+.game__player {
+  grid-area: g2;
   order: 2;
   margin: auto;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 60px;
   background-image: url(./image/pngkey.com-game-character-png-1066616.png);
   background-size: 100%;
   background-position: center;
-  border-radius: 10rem;
   overflow: hidden;
-  transition: transform 1s linear;
+  transition: transform 0.5s linear;
 }
-main .game__path {
+.game__path {
   background-color: darksalmon;
   background-image: url(./image/Brick_01.png);
   background-position: center;
   background-size: 100%;
 }
-main .game__thorns {
+.game__thorns {
   background-color: darkolivegreen;
   background-image: url(./image/bushes-png-2836.png);
   background-position: center;
   background-size: 95%;
 }
-main .game__bomb {
+.game__bomb {
   background-color: darksalmon;
   background-image: url(./image/Brick_04.png);
   background-size: 100%;
 }
-main .game__gate {
+.game__gate {
   background-color: dodgerblue;
   background-size: 100%;
   background-position: center;
 }
-main #p1 {
+
+#p1 {
   grid-area: p1;
 }
-main #p2 {
+
+#p2 {
   grid-area: p2;
 }
-main #p3 {
+
+#p3 {
   grid-area: p3;
 }
-main #p4 {
+
+#p4 {
   grid-area: p4;
 }
-main #p5 {
+
+#p5 {
   grid-area: p5;
 }
-main #p6 {
+
+#p6 {
   grid-area: p6;
 }
-main #p7 {
+
+#p7 {
   grid-area: p7;
 }
-main #p8 {
+
+#p8 {
   grid-area: p8;
 }
-main #p9 {
+
+#p9 {
   grid-area: p9;
 }
-main #p10 {
+
+#p10 {
   grid-area: p10;
 }
-main #p11 {
+
+#p11 {
   grid-area: p11;
 }
-main #p12 {
+
+#p12 {
   grid-area: p12;
 }
-main #p13 {
+
+#p13 {
   grid-area: p13;
 }
-main #p14 {
+
+#p14 {
   grid-area: p14;
 }
-main #p15 {
+
+#p15 {
   grid-area: p15;
 }
-main #p16 {
+
+#p16 {
   grid-area: p16;
 }
-main #p17 {
+
+#p17 {
   grid-area: p17;
 }
-main #p18 {
+
+#p18 {
   grid-area: p18;
 }
-main #p19 {
+
+#p19 {
   grid-area: p19;
 }
-main #p20 {
+
+#p20 {
   grid-area: p20;
 }
-main #p21 {
+
+#p21 {
   grid-area: p21;
 }
-main #p22 {
+
+#p22 {
   grid-area: p22;
 }
-main #p23 {
+
+#p23 {
   grid-area: p23;
 }
-main #p24 {
+
+#p24 {
   grid-area: p24;
 }
-main #p25 {
+
+#p25 {
   grid-area: p25;
 }
-main #p26 {
+
+#p26 {
   grid-area: p26;
 }
-main #p27 {
+
+#p27 {
   grid-area: p27;
 }
-main #p28 {
+
+#p28 {
   grid-area: p28;
 }
-main #p29 {
+
+#p29 {
   grid-area: p29;
 }
-main #t1 {
+
+#t1 {
   grid-area: t1;
 }
-main #t2 {
+
+#t2 {
   grid-area: t2;
 }
-main #t3 {
+
+#t3 {
   grid-area: t3;
 }
-main #t4 {
+
+#t4 {
   grid-area: t4;
 }
-main #t5 {
+
+#t5 {
   grid-area: t5;
 }
-main #t7 {
+
+#t6 {
+  grid-area: t6;
+}
+
+#t7 {
   grid-area: t7;
 }
-main #t8 {
+
+#t8 {
   grid-area: t8;
 }
-main #t9 {
+
+#t9 {
   grid-area: t9;
 }
-main #t10 {
+
+#t10 {
   grid-area: t10;
 }
-main #t11 {
+
+#t11 {
   grid-area: t11;
 }
-main #t12 {
+
+#t12 {
   grid-area: t12;
 }
-main #t13 {
+
+#t13 {
   grid-area: t13;
 }
-main #t14 {
+
+#t14 {
   grid-area: t14;
 }
-main #t15 {
+
+#t15 {
   grid-area: t15;
 }
-main #t16 {
+
+#t16 {
   grid-area: t16;
 }
-main #t17 {
+
+#t17 {
   grid-area: t17;
 }
-main #t18 {
+
+#t18 {
   grid-area: t18;
 }
-main #t19 {
+
+#t19 {
   grid-area: t19;
 }
-main #t20 {
+
+#t20 {
   grid-area: t20;
 }
-main #t21 {
+
+#t21 {
   grid-area: t21;
 }
-main #t22 {
+
+#t22 {
   grid-area: t22;
 }
-main #t23 {
+
+#t23 {
   grid-area: t23;
 }
-main #t24 {
+
+#t24 {
   grid-area: t24;
 }
-main #t25 {
+
+#t25 {
   grid-area: t25;
 }
-main #t26 {
+
+#t26 {
   grid-area: t26;
 }
-main #t27 {
+
+#t27 {
   grid-area: t27;
 }
-main #t28 {
+
+#t28 {
   grid-area: t28;
 }
-main #t29 {
+
+#t29 {
   grid-area: t29;
 }
-main #t30 {
+
+#t30 {
   grid-area: t30;
 }
-main #t31 {
+
+#t31 {
   grid-area: t31;
 }
-main #t32 {
+
+#t32 {
   grid-area: t32;
 }
-main #t33 {
+
+#t33 {
   grid-area: t33;
 }
-main #t34 {
+
+#t34 {
   grid-area: t34;
 }
-main #t35 {
+
+#t35 {
   grid-area: t35;
 }
-main #t36 {
+
+#t36 {
   grid-area: t36;
 }
-main #t37 {
+
+#t37 {
   grid-area: t37;
 }
-main #t38 {
+
+#t38 {
   grid-area: t38;
 }
-main #t39 {
+
+#t39 {
   grid-area: t39;
 }
-main #t40 {
+
+#t40 {
   grid-area: t40;
 }
-main #t41 {
+
+#t41 {
   grid-area: t41;
 }
-main #b1 {
+
+#b1 {
   grid-area: b1;
 }
-main #b2 {
+
+#b2 {
   grid-area: b2;
 }
-main #b3 {
+
+#b3 {
   grid-area: b3;
 }
-main #b4 {
+
+#b4 {
   grid-area: b4;
 }
-main #b5 {
+
+#b5 {
   grid-area: b5;
 }
-main #b6 {
+
+#b6 {
   grid-area: b6;
 }
-main #b7 {
+
+#b7 {
   grid-area: b7;
 }
-main #g1 {
+
+#g1 {
   grid-area: g1;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
   background-size: 100px;
   overflow: hidden;
 }
-main #g2 {
+
+#g2 {
   grid-area: g2;
   background-image: url(./image/2_stone-arch-in-cartoon-style-on-white-background_.jpg);
   transform: rotate();
   background-size: 100px;
   overflow: hidden;
 }
-main #g3 {
+
+#g3 {
   grid-area: g3;
   background-image: url(./image/1_stone-arch-in-cartoon-style-on-white-background_.jpg);
   transform: rotate(180deg);
   max-width: 100%;
   background-size: 100px;
 }
-main .movement {
-  height: 20vh;
+
+.movement {
+  height: 10vh;
   text-align: center;
 }
-main .movement__buttons {
+.movement__buttons {
   margin: 0.15rem;
   padding: 0.3rem;
   width: 3rem;
@@ -370,4 +475,40 @@ main .movement__buttons {
   cursor: pointer;
   font-weight: 700;
   background-color: rgba(93, 46, 202, 0.8);
+}
+
+.game-end {
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgreen;
+  opacity: 0.9;
+  font-size: large;
+  color: white;
+}
+
+.win-health {
+  color: red;
+}
+
+#remove {
+  margin: 0.5rem;
+  padding: 0.4rem;
+  margin-left: 3rem;
+  font-size: 0.7rem;
+  border-radius: 50px;
+  background-color: rgba(93, 46, 202, 0.8);
+  cursor: pointer;
+  font-weight: 700;
+  opacity: 1;
+}
+
+.game-end.show {
+  display: flex;
 }
