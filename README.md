@@ -9,7 +9,7 @@ This is my web browser game, it contains 2 versions. 1 a click-based interaction
 src="./image/button level.png"/>
 
 <img
-src="mouse hover level.png"/>
+src="./image/mouse hover level.png"/>
 
 
 The game is a maze that you have to navigate to reach the exit within a set time limit, but also avoid bombs, thorn tiles and a trap exit.
